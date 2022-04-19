@@ -9,7 +9,6 @@ if(empty($_SESSION['active'])){
 
 
 <?php
-include "funtion.php";
 include "conexion.php";
 ?>
 
