@@ -58,12 +58,7 @@ if($nombre_foto !=''){
    }
 }
 
-
-
 ?>
-
-
-
 
 
 <?php
@@ -164,11 +159,7 @@ include "funtion.php";
               <div class="form-group col-md-6">
                 <label for="existencia">Existencia</label>
                 <input type="text" class="form-control" id="existencia" placeholder="existencia" name="existencia">
-              </div>
-              
-                   
-           
-          
+              </div> 
 <div class="photo">
 	<label for="foto">Foto</label>
         <div class="prevPhoto">
@@ -180,10 +171,6 @@ include "funtion.php";
         </div>
         <div id="form_alert"></div>
 </div>
-
-              
-                
-
             </div>
 
           <div class="alert text-center ">
@@ -196,11 +183,6 @@ include "funtion.php";
             </div>       
         </div>                  
     </div>
-      
-
-
- 
-  
       
     <script type="text/javascript" src="app.js"></script> 
     <script src="jquery/jquery-3.3.1.min.js"></script>	 	

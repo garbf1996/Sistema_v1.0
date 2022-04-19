@@ -6,13 +6,6 @@ if(empty($_SESSION['active'])){
 ?>
 <?php
 include "conexion.php";
-include "funtion.php";
-?>
-
-<?php
-
-
-include "conexion.php";
 if(!empty($_POST)){
 $alesrt='';
 if(empty($_POST['proveedor'])||empty($_POST['sector_comercial'])||empty($_POST['telefono']))
@@ -43,14 +36,7 @@ $alesrt = '<h2><p class="alert alert-danger" role="alert">Los campos no esta com
         }
    }
 }
-
-
-
 ?>
-
-
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -143,12 +129,6 @@ $alesrt = '<h2><p class="alert alert-danger" role="alert">Los campos no esta com
             </div>       
         </div>                  
     </div>
-      
-
-
- 
-  
-      
     <script src="js/app.js"></script>
     <script src="jquery/jquery-3.3.1.min.js"></script>	 	
     <script src="popper/popper.min.js"></script>	 	 	

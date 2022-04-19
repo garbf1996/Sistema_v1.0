@@ -12,6 +12,7 @@ include "conexion.php";
 
 <!doctype html>
 <html lang="en">
+  <head>
  <?PHP
  include "nav.php";
  ?>
@@ -36,8 +37,9 @@ include "conexion.php";
             <div class="form-outline">
             <input type="search" id="form1" name="busqueda" value="<?php echo $busqueda; ?>" class="form-control" />
             </div>
-            </form>
-            </ul>
+                  </div>
+                </form>
+
             <br>
             <table class="table">
             <thead class="thead-dark">
@@ -137,17 +139,13 @@ include "conexion.php";
                  ?>
                  </tbody>
                 </table>
-            </div>
+                </ul>
                 </div>
-               
-        </div>   
-       
-</nav>
-    </div>
-            </div>       
-        </div>                  
-    </div>
-      
+                </div>
+                </div>
+            </div>
+           </div>
+      </div>
     <script src="js/app.js"></script>
     <script src="jquery/jquery-3.3.1.min.js"></script>	 	
     <script src="popper/popper.min.js"></script>	 	 	

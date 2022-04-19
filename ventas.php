@@ -6,10 +6,7 @@ if(empty($_SESSION['active'])){
 ?>
 <?php
 include "conexion.php";
-include "funtion.php";
 ?>
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -83,8 +80,8 @@ include "funtion.php";
 
               <input type="submit" class="ClassName  btn btn-primary" id="ClassName ">
                 </div>
-            </form>
-          </div>
+          </span>
+                </form>
          </div>
          <br>
 
@@ -199,13 +196,9 @@ include "funtion.php";
      });
 
     </script> 
-
-       </div>
-       </div>
-            </div>
-            
-            </div>
-        </div>   
+    </div>
+     </div>
+      </div>  
     <script type="text/javascript" src="app.js"></script> 
     <script src="popper/popper.min.js"></script>	 	 	
     <script src="js/bootstrap.min.js"></script>  	  	

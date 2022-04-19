@@ -5,7 +5,6 @@ if(empty($_SESSION['active'])){
 }
 ?>
 <?php
-include "funtion.php";
 include "conexion.php";
 ?>
 
@@ -45,8 +44,8 @@ include "nav.php";
             <div class="form-outline">
             <input type="search" id="form1" name="busqueda" value="<?php echo $busqueda; ?>" class="form-control" />
             </div>
-            </form>
-            </ul>
+                  </div>
+                </form>
             <br>
             <br>
            <table class="table">
@@ -147,17 +146,13 @@ include "nav.php";
                  ?>
                  </tbody>
                 </table>
-            </div>
+                </ul>
                 </div>
-               
-        </div>   
-       
-</nav>
-    </div>
-            </div>       
-        </div>                  
-    </div>
-      
+                </div>
+                </div>
+            </div>
+      </div>
+      </div>
     <script src="js/app.js"></script>
     <script src="jquery/jquery-3.3.1.min.js"></script>	 	
     <script src="popper/popper.min.js"></script>	 	 	

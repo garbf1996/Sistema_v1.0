@@ -148,16 +148,13 @@ include "conexion.php";
                  ?>
                  </tbody>
                 </table>
-            </div>
+                </ul>
                 </div>
-               
-        </div>   
-       
-</nav>
-    </div>
-            </div>       
-        </div>                  
-    </div>
+                </div>
+                </div>
+            </div>
+           </div>
+      </div>
       
     <script src="js/app.js"></script>
     <script src="jquery/jquery-3.3.1.min.js"></script>	 	

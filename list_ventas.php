@@ -22,7 +22,7 @@ include "conexion.php";
     <title>Lista de ventas</title>  
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
   </head>
-  
+  <body>
     <br>
        <div class="container">
         <div class="row">
@@ -111,12 +111,11 @@ include "conexion.php";
                 </table>
                 </div>
                 </div>
-                </div>   
-                </nav>
                 </div>
-                </div>       
-                </div>                  
-                </div>
+            </div>
+           </div>
+    </div>
+
       
     <script type="text/javascript" src="app.js"></script> 
     <script src="popper/popper.min.js"></script>	 	 	

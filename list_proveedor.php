@@ -7,7 +7,6 @@ if(empty($_SESSION['active'])){
 
 
 <?php
-include "funtion.php";
 include "conexion.php";
 ?>
 
@@ -118,14 +117,9 @@ include "conexion.php";
                 </table>
             </div>
                 </div>
-               
         </div>   
-       
-</nav>
-    </div>
-            </div>       
-        </div>                  
-    </div>
+           </div>
+      </div>
       
     <script src="js/app.js"></script>
     <script src="jquery/jquery-3.3.1.min.js"></script>	 	

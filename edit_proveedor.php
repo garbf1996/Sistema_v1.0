@@ -167,16 +167,11 @@ include "nav.php";
              <?php echo isset( $alesrt )?  $alesrt  : '';?>
             </div>
             <button type="submit" class="btn btn-primary" id="btnGuadar">Actualizar</button>
-          </form>
-        </div>   
-    </div>
-            </div>       
-        </div>                  
-    </div>
-    </div>
-            </div>       
-        </div>                  
-    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+      </div>
     <script src="js/app.js"></script>
     <script src="jquery/jquery-3.3.1.min.js"></script>	 	
     <script src="popper/popper.min.js"></script>	 	 	

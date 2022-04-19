@@ -96,9 +96,10 @@ include "nav.php";
 <button type="submit" class="btn btn-success" id="btnGuadar">Aceptar</button>
 <a href="list_usuario.php"><button type="submit" class="btn btn-danger" id="btnGuadar" value=" salier">Cancelar</button></a>
 </form>
-  </div>
-</div>
-</div>
+    </div>
+    </div>
+    </section>
+      </div>
 <script src="js/app.js"></script>
     <script src="jquery/jquery-3.3.1.min.js"></script>	 	
     <script src="popper/popper.min.js"></script>	 	 	

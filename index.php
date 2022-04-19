@@ -86,7 +86,8 @@ if(!empty($_POST))
                             <div class="form-group">
                             <input type="submit" name="iniciar sesion" class="btn btn-info btn-md" value="Iniciar sesión">
                             </div>
-                         </form>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

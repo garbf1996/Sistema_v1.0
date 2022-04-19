@@ -177,15 +177,9 @@ include "funtion.php";
           </form>
         </div>   
     </div>
-            </div>       
-        </div>                  
+    </div>       
+    </div>                  
     </div>
-      
-
-
- 
-  
-      
     <script src="js/app.js"></script>
     <script src="jquery/jquery-3.3.1.min.js"></script>	 	
     <script src="popper/popper.min.js"></script>	 	 	

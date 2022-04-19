@@ -23,7 +23,7 @@ include "conexion.php";
     <title>Lista de ventas</title>  
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
   </head>
-  
+  <body>
     <br>
        <div class="container">
         <div class="row">
@@ -46,8 +46,8 @@ include "conexion.php";
             <div class="form-outline">
             <input type="search" id="form1" name="busqueda" value="<?php echo $busqueda; ?>" class="form-control" />
             </div>
-            </form>
-            </ul>
+                  </div>
+                   </form>
             <br>
             
 
@@ -119,15 +119,12 @@ include "conexion.php";
                  ?>
                  </tbody>
                 </table>
-            </div>
+                </ul>
                 </div>
-               
-        </div>   
-       
-</nav>
-    </div>
-            </div>       
-        </div>                  
+                </div>
+                </div>
+            </div>
+           </div>
     </div>
       
     <script type="text/javascript" src="app.js"></script> 

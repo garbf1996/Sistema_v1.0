@@ -6,7 +6,6 @@ if(empty($_SESSION['active'])){
 ?>
 <?php
 include "conexion.php";
-include "funtion.php";
 ?>
 
 
@@ -47,12 +46,7 @@ include "funtion.php";
       </div>
     </div>
   </div>
-</div>
-    </form>
-    <br>
-  </div>
- 
-          
+      </form>
     <script type="text/javascript" src="funcio.js"></script> 
     <script src="jquery/jquery-3.6.0.min.js"></script>	 	
     <script src="popper/popper.min.js"></script>	 	 	
