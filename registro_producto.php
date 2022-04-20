@@ -63,7 +63,6 @@ if($nombre_foto !=''){
 
 <?php
 include "conexion.php";
-include "funtion.php";
 ?>
 
 <!doctype html>

@@ -8,72 +8,79 @@ if(empty($_SESSION['active'])){
 }
 ?>
 
-
 <?php
 include "conexion.php";
 if(!empty($_POST)){
 $alesrt='';
-if(empty($_POST['nombre'])||empty($_POST['modelos'])||empty($_POST['ser_no'])||empty($_POST['categoria'])||empty($_POST['id']))
+if(empty($_POST['nombre'])||empty($_POST['modelos'])||empty($_POST['ser_no'])||empty($_POST['categoria']))
 {
 $alesrt = '<h2><p class="alert alert-danger" role="alert">Los campos no esta completos</p></h2>';
 }else{
 
-  $codproducto = $_POST['id'];
+  
   $nombre = $_POST["nombre"];
   $modelos = $_POST["modelos"];
   $ser_no = $_POST["ser_no"];
   $categoria = $_POST["categoria"];
   $proveedor  = $_POST["proveedor"];
-  $precio  = $_POST["precio"];
-
-  $query_update = mysqli_query($conection,"UPDATE  producto 
-  SET nombre = '$nombre',modelos='$modelos',ser_no='$ser_no',categoria='$categoria',proveedor=$proveedor,precio='$precio')
-  WHERE codproducto = $codproducto ");
-
-  if($sql_update){
-    $alesrt = '<h1><p class="alert-success" role="alert">Cliente Actualizado</p></h1>';
-  }else{
-    $alesrt = '<h2><p class="alert alert-danger" role="alert">No fue imposible actualizar el cliente</p></h2>';
-  }
-
-
-
-}
-mysqli_close($conection);
+  $precio = $_POST["precio"];
+  $existencia= $_POST["existencia"];
+  $idusuario = $_SESSION['idusuario'];
+  $foto = $_FILES['foto'];
+  $nombre_foto = $foto['name'];
+  $typr = $foto['type'];
+  $url_temp = $foto['tmp_name'];
+  $nombreProducto = 'img_producto.jpg';
+  
+if($nombre_foto !=''){
+  $distino = 'img/uploads/';
+  $img_nombre = 'img_'.md5(date('d-m-y h:m:s'));
+  $nombreProducto = $img_nombre.'.jpg';
+  $src = $distino.$nombreProducto;
 }
 
 
-if(empty($_REQUEST['id'])){
-    header("Location: list_producto.php");
+
+    $query_insert = mysqli_query($conection,"INSERT INTO  producto (nombre,modelos,ser_no,categoria,proveedor,precio,existencia,foto,idusuario)
+    VALUES(' $nombre','$modelos','$ser_no',' $categoria','$proveedor','$precio','$existencia','$nombreProducto','$idusuario')");
+
+        if($query_insert){
+
+          if($nombre_foto != ''){
+            move_uploaded_file($url_temp,$src);
+          }
+        
+          $alesrt = '<h2><p class="alert alert-success" role="alert">Productos registrados</p></h2>';
+
+        }else{
+          $alesrt ='</h2><p class="alert alert-danger" role="alert">No fue imposible de registra el Productos</p></h2>';
+        }
+   }
+}
+
+if(!empty($_POST)){
+  header("location: list_producto.php");
 }else{
-    $id_producto = $_REQUEST['id'];
-    if(! is_numeric($id_producto)){
-        header("Location: list_producto.php");
-    }
-    $query_producto = mysqli_query($conection,"SELECT p.codproducto,p.nombre,p.modelos,p.ser_no,p.categoria,pr.proveedor,pr.idproveedor,p.precio,p.existencia,p.foto FROM producto p 
-    INNER JOIN proveedor pr ON p.proveedor = pr.idproveedor WHERE p.codproducto = $id_producto AND p.estatus = 1 ");
-    $reesult_producto = mysqli_num_rows($query_producto);
-    $foto = '';
-    if($reesult_producto > 0){
-        $data_producto = mysqli_fetch_array($query_producto);
-
-      $foto = '<img src="img/uploads>'.$data_producto['foto'].'" alt="producto">';
-
-    }else{
-        header("Location: list_producto.php");  
-    }
+  $id_producto = $_REQUEST['id'];
+  if(!is_numeric($id_producto)){
+    header("location: list_producto.php");
+  }
+  $quety_producto = mysqli_query($conection,"SELECT p.codproducto,p.nombre,p.modelos,p.ser_no,p.categoria,pr.proveedor FROM producto p INNER JOIN proveedor pr on p.proveedor = pr.idproveedor
+  WHERE p.codproducto = $id_producto AND p.estatus = 1");
+  $resultado_producto = mysqli_num_rows($quety_producto);
+  if($resultado_producto > 0){
+    $data_producto = mysqli_fetch_array($quety_producto);
+  print_r($data_producto);
+  }else{
+    header("location: list_producto.php");
+  }
 }
-
 
 ?>
 
 
-
-
-
 <?php
 include "conexion.php";
-include "funtion.php";
 ?>
 
 <!doctype html>
@@ -82,7 +89,10 @@ include "funtion.php";
   <?php
   include "nav.php";
   ?>
-    <title>Sistemas</title>  
+    <title>Sistemas</title> 
+    <link rel="stylesheet" href="estilos.css">  
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
   </head>
   <body>
   <!--Formulario-->
@@ -91,7 +101,7 @@ include "funtion.php";
         <div class="row">
             <div class="col-lg-12 col-md-6">
             <div class="card shadow-lg p-3 mb-5 bg-white ">
-        <div class="card-header text-center"> <h1>Actualizar Producto </h1></div>
+        <div class="card-header text-center"> <h1>Actualizar Productos </h1></div>
         <div class="card-body col-md-12">
         <br>
             <ul class="nav nav-tabs">
@@ -107,29 +117,30 @@ include "funtion.php";
               
           <form id="empleado-Datos" action="" method="POST" onsubmit="return validar();" enctype="multipart/form-data">
             <!--Grupo 1-->
+            
 
-       <input type="hidden" name="id" value="<?php echo $codproducto?>">
-         
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="nombre">Producto</label>
-                <input type="text" class="form-control" id="proveedor" placeholder="Producto" name="nombre" value="<?php echo $data_producto ['nombre']?>">
+                <input type="text" class="form-control" id="proveedor" placeholder="Producto" name="nombre" value="<?php echo $data_producto ['nombre'] ?>">
               </div>
             
                
               <div class="form-group col-md-6">
                 <label for="modelos">Modelos</label>
-                <input type="text" class="form-control" id="modelos" placeholder="Modelos" name="modelos" name="nombre" value="<?php echo $data_producto ['modelos']?>" >
-</div>
+                <input type="text" class="form-control" id="modelos" placeholder="Modelos" name="modelos"value="<?php echo $data_producto ['modelos'] ?>">
+              </div>
+
+
             
               <div class="form-group col-md-6">
                 <label for="ser_no">S/N</label>
-                <input type="text" class="form-control" id="ser_no" placeholder="S/N" name="ser_no" value="<?php echo $data_producto ['ser_no']?>" >
+                <input type="text" class="form-control" id="ser_no" placeholder="S/N" name="ser_no"value="<?php echo $data_producto ['ser_no'] ?>">
               </div>
 
               <div class="form-group col-md-6">
                 <label for="categoria">Categoria</label>
-                <input type="text" class="form-control" id="categoria" placeholder="Categoria" name="categoria" value="<?php echo $data_producto ['categoria']?>">
+                <input type="text" class="form-control" id="categoria" placeholder="Categoria" name="categoria" value="<?php echo $data_producto ['categoria'] ?>">
               </div>
 
 
@@ -143,7 +154,6 @@ include "funtion.php";
             ?>
                  <label for="proveedor">proveedor</label>
                  <select name="proveedor" id="proveedor" class="form-control">
-                 <option value="<?php $data_producto['idproveedor']; ?>"><?php $data_producto['idproveedor']; ?></option>
                 <?php
                 if($resultado_proveedor > 0){
                   while($proveedor = mysqli_fetch_array($query_proveedor) ){
@@ -156,31 +166,20 @@ include "funtion.php";
                 ?>
                </select>
               </div>
-
-
-
-
-              <div class="form-group col-md-6">
-                <label for="existencia">Existencia</label>
-                <input type="text" class="form-control" id="existencia" placeholder="existencia" name="existencia" value="<?php echo $data_producto ['existencia']?>">
-              </div>
-              
-                   
-    
-
             </div>
 
           <div class="alert text-center ">
              <?php echo isset( $alesrt )?  $alesrt  : '';?>
             </div>
-            <button type="submit" class="btn btn-primary" id="btnGuadar">Actualizar</button>
+            <button type="submit" class="btn btn-primary" id="btnGuadar">Registrar</button>
           </form>
         </div>   
     </div>
-    </div>       
-    </div>                  
+            </div>       
+        </div>                  
     </div>
-    <script src="js/app.js"></script>
+      
+    <script type="text/javascript" src="app.js"></script> 
     <script src="jquery/jquery-3.3.1.min.js"></script>	 	
     <script src="popper/popper.min.js"></script>	 	 	
     <script src="js/bootstrap.min.js"></script>   	 	  	

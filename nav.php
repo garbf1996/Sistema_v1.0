@@ -26,7 +26,7 @@
                <a class="nav-link" href="ventas.php">Ventas</a>
               <?php } ?>
           </li>
-          </ul>
+          </li>
           <li class="nav-item">
           <?php
               if($_SESSION['idrol'] ==1 || $_SESSION['idrol']==2){
@@ -63,8 +63,11 @@
           <li class="nav-item">
             <a class="nav-link " href="#">Contactos</a>
           </li>
-    </div>
-</nav>
+
+        </ul>
+        </ul>
         <form class="form-inline my-2 my-lg-0">
-        <a href="salir.php"><button type="button"  class="btn btn-outline-danger">Salirr</button></a>
+        <a href="salir.php"><button type="button"  class="btn btn-outline-danger">Salir</button></a>
     </form>
+      </div>
+    </nav> 
