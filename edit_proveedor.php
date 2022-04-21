@@ -6,7 +6,6 @@ if(empty($_SESSION['active'])){
 ?>
 <?php
 include "conexion.php";
-include "funtion.php";
 ?>
 
 <?php
@@ -113,6 +112,7 @@ include "nav.php";
 
 
             <!--Grupo 1-->   
+            <form id="" action="" method="POST" onsubmit="return validar();">
             <input type="hidden" name="id" value="<?php echo $idproveedor?>">
             <div class="form-row">
               <div class="form-group col-md-6">
@@ -167,6 +167,7 @@ include "nav.php";
              <?php echo isset( $alesrt )?  $alesrt  : '';?>
             </div>
             <button type="submit" class="btn btn-primary" id="btnGuadar">Actualizar</button>
+          </form>
                 </div>
                 </div>
             </div>
