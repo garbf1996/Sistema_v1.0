@@ -46,7 +46,7 @@ include "conexion.php";
             </div>
 
             <br>
-           <table class="table">
+           <table class="table table-responsive table-hover">
             <thead class="thead-dark">
               <tr>
               <th scope="col">id</th>

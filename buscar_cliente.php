@@ -5,7 +5,6 @@ if(empty($_SESSION['active'])){
 }
 ?>
 <?php
-include "funtion.php";
 include "conexion.php";
 ?>
 
@@ -27,6 +26,13 @@ include "conexion.php";
             <div class="card-header text-center"> <h1>buscar cliente</h1></div>
             <div class="card-body col-md-12">
             <div class="container">
+            <?php
+                $busqueda = $_REQUEST['busqueda'];
+                if(empty($busqueda)){
+                    header("location: list_producto");
+                    mysqli_close($conection);
+                }
+                ?>
           <br>
             <ul class="nav nav">
               <li class="nav-item com-md-12">
@@ -41,7 +47,8 @@ include "conexion.php";
                 </form>
 
             <br>
-            <table class="table">
+            <br>
+            <table class="table table-responsive table-hover">
             <thead class="thead-dark">
               <tr>
               <th scope="col">id</th>
@@ -52,7 +59,8 @@ include "conexion.php";
                 <th scope="col">Dirreción</th>
                 <th scope="col">Ciudad</th>
                 <th scope="col">Contactos</th>
-                <th scope="col">Acciones</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Eliminar</th>
                  </thead>
                  <tbody>
                   <tr>
@@ -109,7 +117,6 @@ include "conexion.php";
                    while($data= mysqli_fetch_array($qury)){
                    ?>
                    <tr>
-                   <?php  $data["idcliente"]?>
                    <td><?php echo $data["idcliente"]?></td>
                     <td><?php echo $data["nombre"];?></td>
                     <td><?php echo $data["apellido"];?></td>
@@ -120,15 +127,15 @@ include "conexion.php";
                     <td><?php echo $data["movil"];?></td>
                     <td>
                      
-                      <a href="edit_usuario.php?id=<?php echo $data["idusuario"];?>">Editar</a> |
+                      <a href="edit_usuario.php?id=<?php echo $data["idusuario"];?>">Editar</a> 
                       <?php
                       if($_SESSION['idrol'] ==1 || $_SESSION['idrol'] ==2){
-
                       ?>
-                      <a href="dele_user.php?id=<?php echo $data["idusuario"];?>">Eliminar</a>
-
                       <?php }
                       ?>
+                    </td>
+                    <td>
+                    <a href="eliminar_confimar_cliente.php?id=<?php echo $data["idusuario"];?>">Eliminar</a>
                     </td>
                    </tr> 
                    <?php  

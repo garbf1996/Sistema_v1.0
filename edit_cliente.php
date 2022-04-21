@@ -6,14 +6,6 @@ if(empty($_SESSION['active'])){
   header('Location: /SISTEMA_V1.0/');
 }
 ?>
-
-
-<?php
-include "funtion.php";
-?>
-
-
-
 <?php
 include "conexion.php";
 if(!empty($_POST)){

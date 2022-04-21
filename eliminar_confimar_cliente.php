@@ -61,12 +61,6 @@ while($data = mysqli_fetch_array($query)){
 
 
 ?>
-<?php
-
-include "funtion.php";
-?>
-
-
 <!doctype html>
 <html lang="en">
   <head>
