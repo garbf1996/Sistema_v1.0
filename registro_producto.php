@@ -72,7 +72,7 @@ include "conexion.php";
   include "nav.php";
   ?>
     <title>Sistemas</title> 
-    <link rel="stylesheet" href="estilos.css">  
+    <link rel="stylesheet" href="css/estilos.css">  
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
   </head>
