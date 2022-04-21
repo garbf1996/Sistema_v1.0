@@ -94,20 +94,20 @@ include "nav.php";
                    $desde = ($pagina -1) * $por_pagina;
                    $total_pagina = ceil($total_registro / $por_pagina);
                   // Mostrar datos 
-                 $qury = mysqli_query($conection,"SELECT * FROM producto  WHERE
+                 $qury = mysqli_query($conection,"SELECT  p.codproducto ,p.nombre,p.modelos,p.ser_no,p.categoria,pro.proveedor,p.precio,p.existencia,p.foto
+                  FROM producto p INNER JOIN proveedor pro ON p.proveedor = pro.idproveedor WHERE
                  
                  ( 
-                      idproveedor  LIKE '%$busqueda%' OR 
-                      proveedor LIKE '%$busqueda%' OR 
-                    	sector_comercial LIKE '%$busqueda%' OR 
-                      documentos LIKE '$busqueda%'OR
-                      correo LIKE '$busqueda%'OR
-                      dirrecion LIKE '%$busqueda%' OR 
-                      ciudad LIKE '%$busqueda%' OR 
-                      telefono LIKE '%$busqueda%')
+                        p.codproducto   LIKE '%$busqueda%' OR 
+                        p.nombre LIKE '%$busqueda%' OR 
+                    	  p.modelos LIKE '%$busqueda%' OR 
+                        p.ser_no LIKE '$busqueda%'OR
+                        pro.proveedor LIKE '$busqueda%'OR
+                        p.categoria  LIKE '$busqueda%'OR
+                        p.precio LIKE '%$busqueda%' )
                  AND
                  
-                 estatus = 1 ORDER BY idproveedor ASC
+                 p.estatus = 1 ORDER BY p.codproducto ASC
                  LIMIT $desde,$por_pagina");
                    mysqli_close($conection);
                 $result = mysqli_num_rows($qury);
@@ -116,15 +116,15 @@ include "nav.php";
                    while($data= mysqli_fetch_array($qury)){
                    ?>
                    <tr>
-                   <td><?php echo $data["idproveedor"]?></td>
+                 <td><?php echo $data["codproducto"]?></td>
+                    <td><?php echo $data["nombre"];?></td>
+                    <td><?php echo $data["modelos"];?></td>
+                    <td><?php echo $data["ser_no"];?></td>
                     <td><?php echo $data["proveedor"];?></td>
-                    <td><?php echo $data["sector_comercial"];?></td>
-                    <td><?php echo $data["documentos"];?></td>
-                    <td><?php echo $data["correo"];?></td>
-                    <td><?php echo $data["URL"];?></td>
-                    <td><?php echo $data["dirrecion"];?></td>
-                    <td><?php echo $data["ciudad"];?></td>
-                    <td><?php echo $data["telefono"];?></td>
+                    <td><?php echo $data["categoria"];?></td>
+                    <td><?php echo $data["precio"];?></td>
+                    <td><?php echo $data["existencia"];?></td>
+                    <td><img src="<?php echo $foto;?>" width="100" height="100"></td>
                     <td>
                      
                       <a href="edit_proveedor.php?id=<?php echo $data["idproveedor"];?>">Editar</a> |

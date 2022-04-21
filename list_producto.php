@@ -31,7 +31,7 @@ include "conexion.php";
 
             <ul class="nav nav">
               <li class="nav-item com-md-12">
-                <a class="nav-link active" href="registro_productophp">Nuevo</a>
+                <a class="nav-link active" href="registro_producto.php">Nuevo</a>
               </li>
             <form action="buscar_producto.php" method="get">
             <div class="input-group">

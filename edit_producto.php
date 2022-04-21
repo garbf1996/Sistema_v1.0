@@ -17,44 +17,25 @@ if(empty($_POST['nombre'])||empty($_POST['modelos'])||empty($_POST['ser_no'])||e
 $alesrt = '<h2><p class="alert alert-danger" role="alert">Los campos no esta completos</p></h2>';
 }else{
 
-  
+  $id_producto = $_POST["id"];
   $nombre = $_POST["nombre"];
   $modelos = $_POST["modelos"];
   $ser_no = $_POST["ser_no"];
   $categoria = $_POST["categoria"];
   $proveedor  = $_POST["proveedor"];
-  $precio = $_POST["precio"];
-  $existencia= $_POST["existencia"];
   $idusuario = $_SESSION['idusuario'];
-  $foto = $_FILES['foto'];
-  $nombre_foto = $foto['name'];
-  $typr = $foto['type'];
-  $url_temp = $foto['tmp_name'];
-  $nombreProducto = 'img_producto.jpg';
-  
-if($nombre_foto !=''){
-  $distino = 'img/uploads/';
-  $img_nombre = 'img_'.md5(date('d-m-y h:m:s'));
-  $nombreProducto = $img_nombre.'.jpg';
-  $src = $distino.$nombreProducto;
-}
 
 
 
-    $query_insert = mysqli_query($conection,"INSERT INTO  producto (nombre,modelos,ser_no,categoria,proveedor,precio,existencia,foto,idusuario)
-    VALUES(' $nombre','$modelos','$ser_no',' $categoria','$proveedor','$precio','$existencia','$nombreProducto','$idusuario')");
 
-        if($query_insert){
-
-          if($nombre_foto != ''){
-            move_uploaded_file($url_temp,$src);
-          }
-        
-          $alesrt = '<h2><p class="alert alert-success" role="alert">Productos registrados</p></h2>';
-
-        }else{
-          $alesrt ='</h2><p class="alert alert-danger" role="alert">No fue imposible de registra el Productos</p></h2>';
-        }
+  $sql_update = mysqli_query($conection,"UPDATE producto SET nombre = '$nombre',modelos='$modelos',ser_no='$ser_no',categoria='$categoria',proveedor=$proveedor
+    WHERE codproducto = $id_producto");
+   
+   if($sql_update){
+    $alesrt = '<h1><p class="alert-success" role="alert">Cliente Actualizado</p></h1>';
+  }else{
+    $alesrt = '<h2><p class="alert alert-danger" role="alert">No fue imposible actualizar el cliente</p></h2>';
+  }   
    }
 }
 
@@ -70,7 +51,6 @@ if(!empty($_POST)){
   $resultado_producto = mysqli_num_rows($quety_producto);
   if($resultado_producto > 0){
     $data_producto = mysqli_fetch_array($quety_producto);
-  print_r($data_producto);
   }else{
     header("location: list_producto.php");
   }
@@ -118,7 +98,7 @@ include "conexion.php";
           <form id="empleado-Datos" action="" method="POST" onsubmit="return validar();" enctype="multipart/form-data">
             <!--Grupo 1-->
             
-
+            <input type="hidden" name="id" value="<?php echo $data_producto['codproducto']?>">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="nombre">Producto</label>
@@ -171,7 +151,7 @@ include "conexion.php";
           <div class="alert text-center ">
              <?php echo isset( $alesrt )?  $alesrt  : '';?>
             </div>
-            <button type="submit" class="btn btn-primary" id="btnGuadar">Registrar</button>
+            <button type="submit" class="btn btn-primary" id="btnGuadar">Actualizar</button>
           </form>
         </div>   
     </div>
