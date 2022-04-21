@@ -49,7 +49,7 @@ include "nav.php";
                 </form>
             <br>
             <br>
-           <table class="table">
+           <table class="table table-responsive table-hover">
             <thead class="thead-dark">
               <tr>
               <th scope="col">id</th>
@@ -61,7 +61,8 @@ include "nav.php";
                 <th scope="col">dirrecion</th>
                 <th scope="col">ciudad</th>
                 <th scope="col">telefono</th>
-                <th scope="col">Acciones</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Eliminar</th>
                  </thead>
                  <tbody>
                   <tr>
@@ -129,15 +130,15 @@ include "nav.php";
                     <td><?php echo $data["telefono"];?></td>
                     <td>
                      
-                      <a href="edit_proveedor.php?id=<?php echo $data["idproveedor"];?>">Editar</a> |
+                      <a href="edit_proveedor.php?id=<?php echo $data["idproveedor"];?>">Editar</a> 
                       <?php
                       if($_SESSION['idrol'] ==1 || $_SESSION['idrol'] ==3){
-
                       ?>
-                      <a href="eliminar_confimar_proveedor.php?id=<?php echo $data["idproveedor"];?>">Eliminar</a>
-
                       <?php }
                       ?>
+                    </td>
+                    <td>
+                    <a href="eliminar_confimar_proveedor.php?id=<?php echo $data["idproveedor"];?>">Eliminar</a>
                     </td>
                    </tr> 
                    <?php  

@@ -48,7 +48,7 @@ include "nav.php";
                 </form>
             <br>
             <br>
-           <table class="table">
+           <table class="table table-responsive table-hover">
             <thead class="thead-dark">
               <tr>
               <th scope="col">id</th>
@@ -126,14 +126,11 @@ include "nav.php";
                     <td><?php echo $data["existencia"];?></td>
                     <td><img src="<?php echo $foto;?>" width="100" height="100"></td>
                     <td>
-                     
-                      <a href="edit_proveedor.php?id=<?php echo $data["idproveedor"];?>">Editar</a> |
+                     <a href="edit_proveedor.php?id=<?php echo $data["idproveedor"];?>">Editar</a> |
                       <?php
                       if($_SESSION['idrol'] ==1 || $_SESSION['idrol'] ==3){
-
                       ?>
                       <a href="eliminar_confimar_proveedor.php?id=<?php echo $data["idproveedor"];?>">Eliminar</a>
-
                       <?php }
                       ?>
                     </td>
