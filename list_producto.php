@@ -110,7 +110,7 @@ include "conexion.php";
                    </td>
                    <td>
                       <?php if($_SESSION['idrol'] ==1 || $_SESSION['idrol'] ==3){ ?>
-                      <a href="eliminar_producto.php?id=<?php echo $data["codproducto"];?>">Eliminar</a>
+                        <a href="eliminar_confimar_producto.php?id=<?php echo $data["codproducto"];?>">Eliminar</a> 
                       <?php }?>
                     </td>
                    </tr> 
