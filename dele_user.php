@@ -64,12 +64,6 @@ $rol = $data['rol'];
 
 
 ?>
-<?php
-
-include "funtion.php";
-?>
-
-
 <!doctype html>
 <html lang="en">
   <head>

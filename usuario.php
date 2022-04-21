@@ -7,14 +7,6 @@ if(empty($_SESSION['active'])){
 
 ?>
 <?php
-include "funtion.php";
-?>
-
-
-
-<?php
-
-
 include "conexion.php";
 //Verificar si metodos post
 if(!empty($_POST)){
