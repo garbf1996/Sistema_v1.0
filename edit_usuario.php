@@ -102,6 +102,7 @@ include "nav.php";
 ?>
 
     <title>Sistemas</title>  
+    <link rel="stylesheet" href="css/estilos.css">  
   </head>
   <body>
 <!--Formulario-->
@@ -162,7 +163,7 @@ include "nav.php";
 
               <div class="form-group col-md-6">
                 <label for="accesos">Tipos de accesos </label>
-                <select id="rol" class="form-control rol" name="rol">
+                <select id="rol" class="form-control rol opction" name="rol">
              <?php
              echo $option;
              if($resultado_rol > 0)

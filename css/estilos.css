@@ -1,3 +1,10 @@
+
+.opction option:first-child{
+	display: none;
+}
+
+
+
 .prevPhoto {
     display: flex;
     justify-content: space-between;
