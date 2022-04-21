@@ -134,21 +134,25 @@ include "conexion.php";
              $resultado_proveedor = mysqli_num_rows($query_proveedor);
              mysqli_close($conection);
             ?>
-                 <label for="proveedor">proveedor</label>
-                 <select name="proveedor" id="proveedor" class="form-control">
-                <?php
-                if($resultado_proveedor > 0){
-                  while($proveedor = mysqli_fetch_array($query_proveedor) ){
-                    ?>
-                     <option value="<?php echo $proveedor['idproveedor']?>"><?php echo $proveedor['proveedor']?><option>
-                    
-                  <?php
-                  }
-                }
-                ?>
-               </select>
-              </div>
-
+            
+             <div class="form-group ">
+                <label for="proveedor"> Proveedor</label>
+                <select id="proveedor" class="form-control rol opction" name="proveedor">
+             <?php
+             if($resultado_proveedor > 0)
+             {
+             while($proveedor = mysqli_fetch_array($query_proveedor)){
+            ?>
+              <option value="<?php echo $proveedor['idproveedor']?>"><?php echo $proveedor['proveedor']?>
+              <option>
+            <?php
+             }
+               }
+             ?>
+                </select>
+            </div> 
+            </div>
+               
               <div class="form-group col-md-6">
                 <label for="precio">Precio</label>
                 <input type="text" class="form-control" id="precio" placeholder="Precio" name="precio">
