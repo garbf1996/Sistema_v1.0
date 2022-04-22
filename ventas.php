@@ -144,7 +144,7 @@ include "conexion.php";
   <tbody>
     <tr>
     <td class="col-md-1">
-    <input type="text" class="form-control" name="cod_producto" id="cod_producto" placeholder="Serial" name="serial">
+    <input type="text" class="form-control" name="cod_producto" id="cod_producto" placeholder="Código">
     </td>
     <td>
      <p id="text_nombre"></p>
