@@ -33,14 +33,46 @@ include "conexion.php";
             <div class="container">
 
        <ul class="nav nav">
-              <form action="buscar_venta.php" method="get">
-            <div class="input-group">
-            <div class="form-outline">
-            <input type="search" id="form1" name="busqueda" class="form-control" />
-            </div>
-            </div>
-            </form>
-            </ul>
+       <div class="container">
+       <div class="row">
+      <div class="col-sm-3">
+      <form action="buscar_venta.php" method="get">
+        <div class="input-group">
+        <div class="form-outline">
+        <input type="search" id="form1" name="busqueda" class="form-control" placeholder="No.factura" />
+        </div>
+        </div>
+        </form>
+      </div>
+    </div>
+    <br>
+  <form action="buscar_venta.php" method="get">
+  <div class="row">
+    <div class="col-md-3">
+     <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Desde</span>
+  </div>
+  <input type="date" class="form-control"  name="fecha_desde" id="fecha_desde"aria-label="Amount (to the nearest dollar)">
+</div>
+    </div>
+   <div class="col-md-3">
+     <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Hasta</span>
+  </div>
+  <input type="date" class="form-control"  name="fecha_hasta" id="fecha_haasta"aria-label="Amount (to the nearest dollar)">
+</div>
+    </div>
+     <div class="col-md-2">
+    <button type="button" class="btn btn-primary form-control">Primary</button>
+    </div>
+  </div>
+</form>
+        
+           </div>
+           
+        </ul>
             <br>
            <table class="table">
             <thead class="thead-dark">
