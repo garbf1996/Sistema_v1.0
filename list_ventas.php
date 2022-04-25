@@ -74,7 +74,7 @@ include "conexion.php";
            
         </ul>
             <br>
-           <table class="table">
+           <table class="table ">
             <thead class="thead-dark">
               <tr>
               <th scope="col">NO.</th>
@@ -83,6 +83,8 @@ include "conexion.php";
                 <th scope="col">Vendedor</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Total factura </th>
+                <th scope="col">Ver</th>
+                <th scope="col">Anular</th>
                  </thead>
                  <tbody>
                   <tr>
@@ -132,6 +134,8 @@ include "conexion.php";
                     <td><?php echo $data["vendedor"];?></td>
                     <td><?php  echo  $estado;?></td>
                     <td><span>RD</span> <?php echo $data["totalfactura"];?></td>
+                    <td> <a class="btn btn-primary"  cl="<?php echo $data["codcliente"];?>" fa="<?php echo $data["nofactura"];?>"><img src="https://cdn-icons-png.flaticon.com/512/2489/2489292.png"width="32" height="32" ></a> </td>
+                    <td> <a class="btn btn-danger" fa="<?php echo $data["nofactura"];?>"><img src="https://cdn-icons-png.flaticon.com/512/782/782747.png"width="32" height="32" ></a> </td>
                    </tr> 
                    <?php  
                    }
