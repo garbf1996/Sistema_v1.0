@@ -5,7 +5,7 @@ $alert = '';
 session_start();
 //verificando la sesión
 if(!empty($_SESSION['active'])){
-    header('location: /SISTEMA_V1.0/inicio.php');
+    header('location: inicio.php');
 }else{
 
 
@@ -37,7 +37,7 @@ if(!empty($_POST))
             $_SESSION['estatus'] = $data['estatus'];
             $_SESSION['idrol'] = $data['idrol'];
 
-            header('location: /SISTEMA_V1.0/inicio.php');
+            header('location: inicio.php');
         
                
         }else{

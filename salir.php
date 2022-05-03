@@ -1,5 +1,5 @@
 <?php
 session_start();
 session_destroy();
-header('Location: /SISTEMA_V1.0/');
+header('Location: index.php');
 ?>
