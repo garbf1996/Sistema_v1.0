@@ -65,7 +65,7 @@ include "conexion.php";
 </div>
     </div>
      <div class="col-md-2">
-    <button type="button" class="btn btn-primary form-control">Primary</button>
+    <button type="button" class="btn btn-primary form-control">Buscar</button>
     </div>
   </div>
 </form>
