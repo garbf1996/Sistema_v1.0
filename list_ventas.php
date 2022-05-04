@@ -134,8 +134,8 @@ include "conexion.php";
                     <td><?php echo $data["vendedor"];?></td>
                     <td><?php  echo  $estado;?></td>
                     <td><span>RD</span> <?php echo $data["totalfactura"];?></td>
-                    <td> <a class="btn btn-primary"  cl="<?php echo $data["codcliente"];?>" fa="<?php echo $data["nofactura"];?>"><img src="https://cdn-icons-png.flaticon.com/512/2489/2489292.png"width="32" height="32" ></a> </td>
-                    <td> <a class="btn btn-danger" fa="<?php echo $data["nofactura"];?>"><img src="https://cdn-icons-png.flaticon.com/512/782/782747.png"width="32" height="32" ></a> </td>
+                    <td> <a href="#" class="btn btn-primary"  cl="<?php echo $data["codcliente"];?>" fa="<?php echo $data["nofactura"];?>"><img src="https://cdn-icons-png.flaticon.com/512/2489/2489292.png"width="32" height="32" ></a> </td>
+                    <td> <a href="#"  fa="<?php echo $data["nofactura"];?>"><img src="https://cdn-icons-png.flaticon.com/512/782/782747.png"width="32" height="32" ></a> </td>
                    </tr> 
                    <?php  
                    }
