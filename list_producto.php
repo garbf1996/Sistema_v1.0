@@ -18,6 +18,7 @@ include "conexion.php";
   include "nav.php";
   ?>
     <title>Sistemas</title>  
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
   </head>
   <body>
     <br>
@@ -110,7 +111,7 @@ include "conexion.php";
                    </td>
                    <td>
                       <?php if($_SESSION['idrol'] ==1 || $_SESSION['idrol'] ==3){ ?>
-                        <a href="eliminar_confimar_producto.php?id=<?php echo $data["codproducto"];?>">Eliminar</a> 
+                        <a href="#" produc="<?php echo $data["codproducto"];?>" class="eliminarProd">eliminar</a>
                       <?php }?>
                     </td>
                    </tr> 
@@ -132,10 +133,8 @@ include "conexion.php";
             </div>       
         </div>                  
     </div>
-      
-    <script src="js/app.js"></script>
-    <script src="jquery/jquery-3.3.1.min.js"></script>	 	
+    <script type="text/javascript" src="app.js"></script> 
     <script src="popper/popper.min.js"></script>	 	 	
-    <script src="js/bootstrap.min.js"></script>   	 	  	
+    <script src="js/bootstrap.min.js"></script>  	 	 	  	
   </body>
 </html>

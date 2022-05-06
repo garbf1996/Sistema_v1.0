@@ -37,19 +37,27 @@ $(document).ready(function() {
         $("#img").remove();
 
     });
-    
-    //agregar cliente
-    $('.nuevoCliente').click(function(e) {
-        e.preventDefault();
-        $('#nom_cliente').removeAttr('disabled');
-        $('#nom_apellido').removeAttr('disabled');
-        $('#nom_correo').removeAttr('disabled');
-        $('#movil').removeAttr('disabled');
-        $('#Ciudad_cliente').removeAttr('disabled');
-        $('#Contactos_cliente').removeAttr('disabled');
-        $('#dir_cliente').removeAttr('disabled');
+
+
+   $('.eliminarProd').click(function (e) { 
+       e.preventDefault();
+     var idproducto = $(this).attr('produc');
+     var action = 'infoproducto';
+
+     $.ajax({
+        type: "POST",
+        assync: true,
+        url: "ajax.php",
+        data: { action: action, idproducto: idproducto },
+        success: function(response) {
+
+          console.log(response);
+        }
+
     });
 
+   });
+ 
 
     //Buscar Cliente
     $('#nit_cliente').keyup(function(e) {
