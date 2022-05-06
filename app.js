@@ -38,11 +38,14 @@ $(document).ready(function() {
 
     });
 
-
+    //Abrir ventana modal
    $('.eliminarProd').click(function (e) { 
        e.preventDefault();
      var idproducto = $(this).attr('produc');
      var action = 'infoproducto';
+
+     $('.modal').fadeIn();
+
 
      $.ajax({
         type: "POST",
@@ -57,6 +60,11 @@ $(document).ready(function() {
     });
 
    });
+   //Cerrar modal
+  $('.closeModal').click(function (e) { 
+      $('.modal').fadeOut();
+      location.reload();
+  });
  
 
     //Buscar Cliente
