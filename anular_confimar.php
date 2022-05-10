@@ -40,7 +40,8 @@ header("location:  list_ventas.php");
 
 $no_nofactura = $_REQUEST['id'];
 
-$query = mysqli_query($conection,"SELECT * FROM factura  WHERE nofactura = $no_nofactura");
+$query = mysqli_query($conection,"SELECT f.nofactura,f.totalfactura,f.fecha,cl.nombre FROM factura f INNER JOIN cliente cl
+ON f.codcliente = cl.idcliente WHERE f.nofactura = $no_nofactura");
 mysqli_close($conection);
 $result = mysqli_num_rows($query);
 
@@ -48,6 +49,9 @@ if($result > 0){
 
 while($data = mysqli_fetch_array($query)){
     $no_nofactura = $data["nofactura"];
+    $totalFactura = $data["totalfactura"];
+    $cliente = $data["nombre"];
+    $fecha = $data["fecha"];
 }
 
 }else{
@@ -76,10 +80,12 @@ include "nav.php";
 <section class="contiarner">
 <div class="card shadow-lg" style="width:  30rem;">
   <div class="card-body text-center">
-    <h2 class=" card-header  card-title">¿Está seguro quiere eliminar este Producto?</h2>
+    <h2 class=" card-header  card-title">¿Está seguro quiere anular esta factura?</h2>
     <br>
-<p class=" h5 font-weight-bold">Nombre: <span class="text-primary"><?php echo $no_nofactura ?></span></p>
-
+<p class=" h5 font-weight-bold">Cliente: <span class="text-primary"><?php echo $cliente ?></span></p>
+<p class=" h5 font-weight-bold">Factura: <span class="text-primary"><?php echo $no_nofactura ?></span></p>
+<p class=" h5 font-weight-bold">Total: <span class="text-primary"><?php echo $totalFactura ?></span></p>
+<p class=" h5 font-weight-bold">Factura: <span class="text-primary"><?php echo $fecha ?></span></p>
 
 <br>
 <form method="POST" action="">
