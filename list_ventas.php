@@ -83,7 +83,6 @@ include "conexion.php";
                 <th scope="col">Vendedor</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Total factura </th>
-                <th scope="col">Ver</th>
                 <th scope="col">Anular</th>
                  </thead>
                  <tbody>
@@ -134,8 +133,19 @@ include "conexion.php";
                     <td><?php echo $data["vendedor"];?></td>
                     <td><?php  echo  $estado;?></td>
                     <td><span>RD</span> <?php echo $data["totalfactura"];?></td>
-                    <td> </td>
-                    <td>  <a href="anular_confimar.php?id=<?php echo $data["nofactura"];?>"><img src="https://cdn-icons-png.flaticon.com/512/782/782747.png"width="32" height="32" ></a></td>
+                    <td>
+                     
+                    
+                     <?php
+                     if($data["estatus"]==1){
+                      $data["estatus"]= true;
+                     ?>
+
+                    <td> <a href="anular_confimar.php?id=<?php echo $data["nofactura"];?>"><img src="https://cdn-icons-png.flaticon.com/512/782/782747.png"width="32" height="32" ></a></td>
+
+                     <?php }
+                     ?>
+                   </td>
                    </tr> 
                    <?php  
                    }
