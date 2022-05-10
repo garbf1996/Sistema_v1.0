@@ -3,7 +3,7 @@
     <link rel="shortcut icon" href="#" />      
     <link rel="stylesheet" href="css/bootstrap.min.css">  
 	<link rel="stylesheet" href="css/estilos.css">
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+ 
 
 
 
@@ -71,33 +71,4 @@
     </form>
       </div>
     </nav> 
-
-    <div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-       <form action="" method="get" name="form_dele_producto" id="form_dele_producto" onsubmit="event.preventDefault(); sendDataProduct();">
-         <input type="hidden" name="" id="" require>
-         <input type="hidden" name="" id="" require>
-          <div class="alert aletDeleproduct"><p> de acion</p></div>
-         
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <a href="#" class="btn_ok closeModal">Cerra</a>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-    <script type="text/javascript" src="app.js"></script> 
-    <script src="popper/popper.min.js"></script>	 	 	
-    <script src="js/bootstrap.min.js"></script>  	 
+ 
