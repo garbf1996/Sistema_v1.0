@@ -8,19 +8,6 @@ if(empty($_SESSION['active'])){
 
 <?php
 include "conexion.php";
-$busqueda = '';
-$fecha_de = '';
-$fecha_a = '';
-if(!empty($_REQUEST['busqueda'])){
-  if(!is_numeric($_REQUEST['busqueda'])){
-    header("location: list_ventas.php");
-  }
-  $busqueda = strtolower($_REQUEST['busqueda']);
-  $wher = "nofactura = $busqueda";
-  $buscar = "busqueda = $busqueda";
-}
-
-
 ?>
 
 
@@ -49,7 +36,7 @@ if(!empty($_REQUEST['busqueda'])){
        <div class="container">
        <div class="row">
       <div class="col-sm-3">
-      <form action="buscar_ventas.php" method="get">
+      <form action="buscar_venta.php" method="get">
         <div class="input-group">
         <div class="form-outline">
         <input type="search" id="form1" name="busqueda" class="form-control" placeholder="No.factura" />
