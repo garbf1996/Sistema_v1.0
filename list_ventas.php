@@ -154,7 +154,7 @@ if(!empty($_REQUEST['busqueda'])){
                       $data["estatus"]= true;
                      ?>
 
-                    <td> <a href="anular_confimar.php?id=<?php echo $data["nofactura"];?>"><img src="https://cdn-icons-png.flaticon.com/512/782/782747.png"width="32" height="32" ></a></td>
+                   <a href="anular_confimar.php?id=<?php echo $data["nofactura"];?>"><img src="https://cdn-icons-png.flaticon.com/512/782/782747.png"width="32" height="32" ></a>
 
                      <?php }
                      ?>
