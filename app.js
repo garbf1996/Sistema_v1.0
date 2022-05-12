@@ -227,7 +227,7 @@ $(document).ready(function() {
         } else {
             $('#add_product').slideDown();
         }
-
+                    
     });
 
 
@@ -272,34 +272,7 @@ $(document).ready(function() {
 
     });
 
-     // Anular venta
-    $('#btn_anular_venta').click(function (e) { 
-    e.preventDefault();
-    var rows = $('#detalle_venta tr').length;
-    if(rows > 0){
-       
-        var action = 'anular_venta'; 
-        
-        $.ajax({
-            type: "POST",
-            url: "ajax.php",
-            async: true,
-            data: { action: action},
-            success: function(response) {
-             console.log(response)
-            if( response != 'error')
-            {
-                location.reload();
-            }
 
-               
-            }
-        });
-        
-        
-    }
-    
-     });
 
 
 
@@ -339,26 +312,7 @@ $(document).ready(function() {
          });
 
 
-         //Modal form Anular factura 
-        // $('.btn_anular_factura').click(function (e) { 
-          //  e.preventDefault();
-          //  var nofactura = $(this).attr('f');
-            //var action = 'infoFactura';    
-              //  $.ajax({
-                  //  type: "POST",
-                  //  url: "ajax.php",
-                   // async: true,
-                   // data: { action: action, nofactura:nofactura},
-                   // success: function(response) {
-                       
-                     //console.log(response)
-                  //  }
-               /// });
-                
-              
-            
-            
-            // });
+      
 });
 //end
 
