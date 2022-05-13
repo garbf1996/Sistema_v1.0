@@ -8,6 +8,49 @@ if(empty($_SESSION['active'])){
 
 <?php
 include "conexion.php";
+$busqueda = '';
+$fecha_de = '';
+$fecha_a = '';
+
+if(isset($_REQUEST['busqueda']) && $_REQUEST['busqueda']==''){
+  header("location: list_ventas.php");
+}
+
+if(isset($_REQUEST['fecha_de']) || isset($_REQUEST['fecha_a'])){
+
+if( $_REQUEST['fecha_de'] =='' || $_REQUEST['fecha_a']=='' ){
+  header("location: list_ventas.php");
+}
+
+}
+
+
+if(!empty($_REQUEST['busqueda'])){
+  if(!is_numeric($_REQUEST['busqueda'])){
+    header("location: list_ventas.php");
+  }
+  $busqueda = strtolower($_REQUEST['busqueda']);
+  $wher = "nofactura = $busqueda";
+  $buscar = "busqueda = $busqueda";
+}
+if(!empty($_REQUEST['fecha_de'])  && !empty($_REQUEST['fecha_a'])){
+  $fecha_de = $_REQUEST['fecha_de'];
+  $fecha_a = $_REQUEST['fecha_a'];
+
+  $buscar = '';
+
+  if($fecha_de > $fecha_a){
+    header("location: list_ventas.php");
+  }else if($fecha_de == $fecha_a){
+    $wher = "fecha LIKE '$fecha_de%'";
+    $buscar = "fecha_de=$fecha_de & fecha_a=$fecha_a";
+  }else{
+   $f_de = $fecha_de.'00:00:00';
+   $f_a = $fecha_a.'23:59:59';
+   $wher = " fecha BETWEEN '$f_de' AND '$fecha_a'";
+   $buscar = "fecha_de=$fecha_de&fecha_a=$fecha_a";
+  }
+}
 
 ?>
 
@@ -32,27 +75,50 @@ include "conexion.php";
             <div class="card-header text-center"> <h1>Lista de ventas</h1></div>
             <div class="card-body col-md-12">
             <div class="container">
-            <?php
-                $busqueda = $_REQUEST['busqueda'];
-                if(empty($busqueda)){
-                    header("location: list_ventas.php");
-                    mysqli_close($conection);
-                }
-                ?>
-                
-               <ul class="nav nav">
-              <form action="buscar_venta.php" method="get">
-            <div class="input-group">
-            <div class="form-outline">
-            <input type="search" id="form1" name="busqueda" value="<?php echo $busqueda; ?>" class="form-control" />
-            </div>
-                  </div>
-                   </form>
-            <br>
-            
 
+       <ul class="nav nav">
+       <div class="container">
+       <div class="row">
+      <div class="col-sm-3">
+      <form action="buscar_venta.php" method="get">
+        <div class="input-group">
+        <div class="form-outline">
+        <input type="search" id="form1" name="busqueda" class="form-control" placeholder="No.factura" value="<?php echo $busqueda?>" />
+        </div>
+        </div>
+        </form>
+      </div>
+    </div>
+    <br>
+  <form action="buscar_venta.php" method="get">
+  <div class="row">
+    <div class="col-md-3">
+     <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Desde</span>
+  </div>
+  <input type="date" class="form-control"  name="fecha_de" id="fecha_de"value="<?php echo $fecha_de?>">
+</div>
+    </div>
+   <div class="col-md-3">
+     <div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Hasta</span>
+  </div>
+  <input type="date" class="form-control"  name="fecha_a" id="fecha_a "value="<?php echo $fecha_a?>">
+</div>
+    </div>
+     <div class="col-md-2">
+    <button type="sumit" class="btn btn-primary form-control">Buscar</button>
+    </div>
+  </div>
+</form>
+        
+           </div>
+           
+        </ul>
             <br>
-           <table class="table">
+           <table class="table ">
             <thead class="thead-dark">
               <tr>
               <th scope="col">NO.</th>
@@ -61,14 +127,14 @@ include "conexion.php";
                 <th scope="col">Vendedor</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Total factura </th>
+                <th scope="col">Anular</th>
                  </thead>
                  <tbody>
                   <tr>
                   <?php
                    
                    // Total registro
-                   $query_total = mysqli_query($conection,"SELECT COUNT(*) as factura FROM cliente WHERE estatus != 10");
-                   $result_total = mysqli_fetch_array($query_total);
+              
                    //Ascendiendo en el campo Total_registro
                    //$total_registro = $result_total ['Total_registro'];
                    $por_pagina = 10;
@@ -85,7 +151,7 @@ include "conexion.php";
                   // Mostrar datos 
                  $qury = mysqli_query($conection,"SELECT f.nofactura,f.fecha,f.totalfactura,f.codcliente,f.estatus,u.nombre as vendedor, cl.nombre 
                   FROM factura f inner join usuario u on f.usuario = u.idusuario inner join cliente cl on f.codcliente = cl.idcliente
-                  where (nofactura LIKE '%$busqueda%') AND f.estatus !=10 order by f.fecha DESC
+                  where $wher AND f.estatus !=10 order by f.fecha DESC
                  LIMIT $desde,$por_pagina");
                        mysqli_close($conection);
 
@@ -110,6 +176,19 @@ include "conexion.php";
                     <td><?php echo $data["vendedor"];?></td>
                     <td><?php  echo  $estado;?></td>
                     <td><span>RD</span> <?php echo $data["totalfactura"];?></td>
+                    <td>
+                     
+                    
+                     <?php
+                     if($data["estatus"]==1){
+                      $data["estatus"]= true;
+                     ?>
+
+                   <a href="anular_confimar.php?id=<?php echo $data["nofactura"];?>"><img src="https://cdn-icons-png.flaticon.com/512/782/782747.png"width="32" height="32" ></a>
+
+                     <?php }
+                     ?>
+                   </td>
                    </tr> 
                    <?php  
                    }
@@ -119,13 +198,13 @@ include "conexion.php";
                  ?>
                  </tbody>
                 </table>
-                </ul>
                 </div>
                 </div>
                 </div>
             </div>
            </div>
     </div>
+
       
     <script type="text/javascript" src="app.js"></script> 
     <script src="popper/popper.min.js"></script>	 	 	

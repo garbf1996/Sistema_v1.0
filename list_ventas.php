@@ -11,6 +11,20 @@ include "conexion.php";
 $busqueda = '';
 $fecha_de = '';
 $fecha_a = '';
+//Verificado los Campos de fechas si no está vacío
+if(isset($_REQUEST['busqueda'])&& $_REQUEST['busqueda']==''){
+  header("location: list_ventas.php");
+}
+
+if(isset($_REQUEST['fecha_de']) || isset($_REQUEST['fecha_a'])){
+
+if( $_REQUEST['fecha_de'] =='' || $_REQUEST['fecha_a']=='' ){
+  header("location: list_ventas.php");
+}
+
+}
+
+
 if(!empty($_REQUEST['busqueda'])){
   if(!is_numeric($_REQUEST['busqueda'])){
     header("location: list_ventas.php");
@@ -20,6 +34,27 @@ if(!empty($_REQUEST['busqueda'])){
   $buscar = "busqueda = $busqueda";
 }
 
+
+if(!empty($_REQUEST['fecha_de'])  && !empty($_REQUEST['fecha_a'])){
+  $fecha_de = $_REQUEST['fecha_de'];
+  $fecha_a = $_REQUEST['fecha_a'];
+
+  $buscar = '';
+
+  if($fecha_de > $fecha_a){
+    header("location: list_ventas.php");
+
+  }else if($fecha_de == $fecha_a){
+    $wher = "fecha LIKE '$fecha_de%'";
+    $buscar = "fecha_de=$fecha_de&fecha_a=$fecha_a";
+  }else{
+   $f_de = $fecha_de.'00:00:00';
+   $f_a = $fecha_a.'23:59:59';
+   $wher = "fecha BETWEEN '$f_de' AND '$f_a'";
+   $buscar = "fecha_de=$fecha_de&fecha_a=$fecha_a";
+  }
+
+}
 
 ?>
 
@@ -49,10 +84,10 @@ if(!empty($_REQUEST['busqueda'])){
        <div class="container">
        <div class="row">
       <div class="col-sm-3">
-      <form action="buscar_ventas.php" method="get">
+      <form action="buscar_venta.php" method="get">
         <div class="input-group">
         <div class="form-outline">
-        <input type="search" id="form1" name="busqueda" class="form-control" placeholder="No.factura" />
+        <input type="search" id="form1" name="busqueda" class="form-control" placeholder="No.factura" value="<?php echo $busqueda?>" />
         </div>
         </div>
         </form>
@@ -66,7 +101,7 @@ if(!empty($_REQUEST['busqueda'])){
   <div class="input-group-prepend">
     <span class="input-group-text">Desde</span>
   </div>
-  <input type="date" class="form-control"  name="fecha_desde" id="fecha_desde"aria-label="Amount (to the nearest dollar)">
+  <input type="date" class="form-control"  name="fecha_de" id="fecha_de"value="<?php echo $fecha_de?>">
 </div>
     </div>
    <div class="col-md-3">
@@ -74,11 +109,11 @@ if(!empty($_REQUEST['busqueda'])){
   <div class="input-group-prepend">
     <span class="input-group-text">Hasta</span>
   </div>
-  <input type="date" class="form-control"  name="fecha_hasta" id="fecha_haasta"aria-label="Amount (to the nearest dollar)">
+  <input type="date" class="form-control"  name="fecha_a" id="fecha_a"value="<?php echo $fecha_a?>">
 </div>
     </div>
      <div class="col-md-2">
-    <button type="button" class="btn btn-primary form-control">Buscar</button>
+    <button type="sumit" class="btn btn-primary form-control">Buscar</button>
     </div>
   </div>
 </form>
