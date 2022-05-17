@@ -152,8 +152,6 @@ if($_POST['action'] == 'detalleProducto'){
         }
         exit;
   }
-
-
   
     // Extrae datos del detalle 
   

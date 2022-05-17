@@ -36,8 +36,7 @@ $alesrt = '<h2><p class="alert alert-danger" role="alert">Los campos no esta com
     $alesrt ='<h2><p class="alert alert-danger" role="alert">Este usuario está registrados</p></h2>';
    }else{
      //Insertar Datos 
-      $query_insert = mysqli_query($conection,"INSERT INTO usuario (nombre,usuario,clave,correo,idrol)
-        VALUES('$nombre','$usuario','$clave','$correo','$rol')");
+      $query_insert = mysqli_query($conection," CALL isertar_usuario('$nombre','$usuario',$clave,'$correo',$rol)");
          //confimaando si el usuario si exicte 
         if($query_insert){
         

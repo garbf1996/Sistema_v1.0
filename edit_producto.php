@@ -57,12 +57,6 @@ if(!empty($_POST)){
 }
 
 ?>
-
-
-<?php
-include "conexion.php";
-?>
-
 <!doctype html>
 <html lang="en">
   <head>

@@ -33,7 +33,7 @@ $alesrt = '<h2><p class="alert alert-danger" role="alert">Los campos no esta com
   $nombreProducto = 'img_producto.jpg';
   
 if($nombre_foto !=''){
-  $distino = 'img/uploads/';
+  $distino = '/img/uploads/';
   $img_nombre = 'img_'.md5(date('d-m-y h:m:s'));
   $nombreProducto = $img_nombre.'.jpg';
   $src = $distino.$nombreProducto;
@@ -59,12 +59,6 @@ if($nombre_foto !=''){
 }
 
 ?>
-
-
-<?php
-include "conexion.php";
-?>
-
 <!doctype html>
 <html lang="en">
   <head>

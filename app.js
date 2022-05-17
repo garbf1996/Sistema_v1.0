@@ -37,35 +37,19 @@ $(document).ready(function() {
         $("#img").remove();
 
     });
-
-    //Abrir ventana modal
-   $('.eliminarProd').click(function (e) { 
-       e.preventDefault();
-     var idproducto = $(this).attr('produc');
-     var action = 'infoproducto';
-
-     $('.modal').fadeIn();
-
-
-     $.ajax({
-        type: "POST",
-        assync: true,
-        url: "ajax.php",
-        data: { action: action, idproducto: idproducto },
-        success: function(response) {
-
-          console.log(response);
-        }
-
+    
+    //agregar cliente
+    $('.nuevoCliente').click(function(e) {
+        e.preventDefault();
+        $('#nom_cliente').removeAttr('disabled');
+        $('#nom_apellido').removeAttr('disabled');
+        $('#nom_correo').removeAttr('disabled');
+        $('#movil').removeAttr('disabled');
+        $('#Ciudad_cliente').removeAttr('disabled');
+        $('#Contactos_cliente').removeAttr('disabled');
+        $('#dir_cliente').removeAttr('disabled');
     });
 
-   });
-   //Cerrar modal
-  $('.closeModal').click(function (e) { 
-      $('.modal').fadeOut();
-      location.reload();
-  });
- 
 
     //Buscar Cliente
     $('#nit_cliente').keyup(function(e) {
@@ -227,7 +211,7 @@ $(document).ready(function() {
         } else {
             $('#add_product').slideDown();
         }
-                    
+
     });
 
 
@@ -272,7 +256,34 @@ $(document).ready(function() {
 
     });
 
+     // Anular venta
+    $('#btn_anular_venta').click(function (e) { 
+    e.preventDefault();
+    var rows = $('#detalle_venta tr').length;
+    if(rows > 0){
+       
+        var action = 'anular_venta'; 
+        
+        $.ajax({
+            type: "POST",
+            url: "ajax.php",
+            async: true,
+            data: { action: action},
+            success: function(response) {
+             console.log(response)
+            if( response != 'error')
+            {
+                location.reload();
+            }
 
+               
+            }
+        });
+        
+        
+    }
+    
+     });
 
 
 
@@ -312,7 +323,26 @@ $(document).ready(function() {
          });
 
 
-      
+         //Modal form Anular factura 
+        // $('.btn_anular_factura').click(function (e) { 
+          //  e.preventDefault();
+          //  var nofactura = $(this).attr('f');
+            //var action = 'infoFactura';    
+              //  $.ajax({
+                  //  type: "POST",
+                  //  url: "ajax.php",
+                   // async: true,
+                   // data: { action: action, nofactura:nofactura},
+                   // success: function(response) {
+                       
+                     //console.log(response)
+                  //  }
+               /// });
+                
+              
+            
+            
+            // });
 });
 //end
 

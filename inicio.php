@@ -21,32 +21,61 @@ include "conexion.php";
   <?php
    include "nav.php";
    ?>
- <form action="" method="POST" name="form_add_product" id="form_add_product" onsubmit="event.preventDefault(); sendDataProduct(); ">
-    <div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title"> <img src="icono/caja.png"> Agragar Producto</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-     <input type="hidden" name="producto_id" id="producto_id" require>
-     <input type="hidden" name="action" id="addProduct" require>
-     <div class="form-group">
-     <input type="number" name="cantidad" id="textcantidad" class="form-control" placeholder="Cantidad del producto" require>
-     </div>
-     <div class="form-group">
-     <input type="text" name="precio" id="txtprecio" class="form-control" placeholder="Precio del producto" require>
-     </div>
-      </div>
-      <div class="modal-footer">
-       <button type="button" class="btn btn-primary col-md-12">Guadar</button></a>
-      </div>
+   <br>
+   <div class="container">
+  <div class="row">
+    <div class="col-4">
+    <div class="card" style="width: 12rem;">
+  <img class="card-img-top" src="https://cdn-icons.flaticon.com/png/512/3161/premium/3161402.png?token=exp=1652817081~hmac=0cc8cd1e4702a17478bc325b3dc1db94" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text"></p>
+  </div>
+</div>
+    </div>
+    <div class="col-4">
+    <div class="card" style="width: 12rem;">
+  <img class="card-img-top" src="https://cdn-icons.flaticon.com/png/512/2143/premium/2143272.png?token=exp=1652817074~hmac=6f1f4569b14fb515684388f4e44b4341" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text"></p>
+  </div>
+</div>
+    </div>
+    <div class="col-4">
+    <div class="card" style="width: 12rem;">
+  <img class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/72/72109.png" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text"></p>
+  </div>
+</div>
     </div>
   </div>
-      </form>
+  <br>
+  <div class="row">
+    <div class="col-4">
+    <div class="card" style="width: 12rem;">
+  <img class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/1524/1524711.png" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text"></p>
+  </div>
+</div>
+    </div>
+    <div class="col-4">
+    <div class="card" style="width: 12rem;">
+  <img class="card-img-top" src="https://cdn-icons.flaticon.com/png/512/5553/premium/5553917.png?token=exp=1652817484~hmac=02018ec02e3419243fa84b907f11d916" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text"></p>
+  </div>
+</div>
+    </div>
+</div>
+  
+
+
     <script type="text/javascript" src="funcio.js"></script> 
     <script src="jquery/jquery-3.6.0.min.js"></script>	 	
     <script src="popper/popper.min.js"></script>	 	 	
