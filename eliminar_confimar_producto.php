@@ -33,7 +33,7 @@ $codproductor= $_POST['codproducto'];
 
 if(empty($_REQUEST['id'])){
 
-header("location:  list_codproducto.php");
+header("location:  list_producto.php");
 
 }else{
 
