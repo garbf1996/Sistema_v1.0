@@ -26,30 +26,12 @@ $alesrt = '<h2><p class="alert alert-danger" role="alert">Los campos no esta com
   $precio = $_POST["precio"];
   $existencia= $_POST["existencia"];
   $idusuario = $_SESSION['idusuario'];
-  $foto = $_FILES['foto'];
-  $nombre_foto = $foto['name'];
-  $typr = $foto['type'];
-  $url_temp = $foto['tmp_name'];
-  $nombreProducto = 'img_producto.jpg';
-  
-if($nombre_foto !=''){
-  $distino = '/img/uploads/';
-  $img_nombre = 'img_'.md5(date('d-m-y h:m:s'));
-  $nombreProducto = $img_nombre.'.jpg';
-  $src = $distino.$nombreProducto;
-}
-
-
-
-    $query_insert = mysqli_query($conection,"INSERT INTO  producto (nombre,modelos,ser_no,categoria,proveedor,precio,existencia,foto,idusuario)
-    VALUES(' $nombre','$modelos','$ser_no',' $categoria','$proveedor','$precio','$existencia','$nombreProducto','$idusuario')");
+ 
+    $query_insert = mysqli_query($conection,"INSERT INTO  producto (nombre,modelos,ser_no,categoria,proveedor,precio,existencia,idusuario)
+    VALUES(' $nombre','$modelos','$ser_no',' $categoria','$proveedor','$precio','$existencia','$idusuario')");
 
         if($query_insert){
 
-          if($nombre_foto != ''){
-            move_uploaded_file($url_temp,$src);
-          }
-        
           $alesrt = '<h2><p class="alert alert-success" role="alert">Productos registrados</p></h2>';
 
         }else{
@@ -157,17 +139,6 @@ if($nombre_foto !=''){
                 <label for="existencia">Existencia</label>
                 <input type="text" class="form-control" id="existencia" placeholder="existencia" name="existencia">
               </div> 
-<div class="photo">
-	<label for="foto">Foto</label>
-        <div class="prevPhoto">
-        <span class="delPhoto notBlock">X</span>
-        <label for="foto"></label>
-        </div>
-        <div class="upimg">
-        <input type="file" name="foto" id="foto">
-        </div>
-        <div id="form_alert"></div>
-</div>
             </div>
 
           <div class="alert text-center ">
