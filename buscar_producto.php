@@ -37,7 +37,7 @@ include "nav.php";
           <br>
             <ul class="nav nav">
               <li class="nav-item com-md-12">
-                <a class="nav-link active" href="usuario.php">Nuevo</a>
+                <a class="nav-link active" href="registro_producto.php">Nuevo</a>
               </li>
               <form action="buscar_producto.php" method="get">
             <div class="input-group">
@@ -59,7 +59,6 @@ include "nav.php";
                 <th scope="col">Categoria</th>
                 <th scope="col">Precio</th>
                 <th scope="col">Existencia</th>
-                <th scope="col">Imágenes</th>
                 <th scope="col">Editar</th>
                 <th scope="col">Eliminar</th>
                  </thead>
@@ -94,7 +93,7 @@ include "nav.php";
                    $desde = ($pagina -1) * $por_pagina;
                    $total_pagina = ceil($total_registro / $por_pagina);
                   // Mostrar datos 
-                 $qury = mysqli_query($conection,"SELECT  p.codproducto ,p.nombre,p.modelos,p.ser_no,p.categoria,pro.proveedor,p.precio,p.existencia,p.foto
+                 $qury = mysqli_query($conection,"SELECT  p.codproducto ,p.nombre,p.modelos,p.ser_no,p.categoria,pro.proveedor,p.precio,p.existencia
                   FROM producto p INNER JOIN proveedor pro ON p.proveedor = pro.idproveedor WHERE
                  
                  ( 
@@ -124,7 +123,6 @@ include "nav.php";
                     <td><?php echo $data["categoria"];?></td>
                     <td><?php echo $data["precio"];?></td>
                     <td><?php echo $data["existencia"];?></td>
-                    <td><img src="<?php echo $foto;?>" width="100" height="100"></td>
                     <td>
                      <a href="edit_proveedor.php?id=<?php echo $data["idproveedor"];?>">Editar</a> |
                       <?php
