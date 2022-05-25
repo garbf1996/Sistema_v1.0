@@ -26,18 +26,18 @@ include "conexion.php";
   <div class="row">
     <div class="col-4">
     <div class="card" style="width: 12rem;">
-  <img class="card-img-top" src="https://cdn-icons.flaticon.com/png/512/3161/premium/3161402.png?token=exp=1652817081~hmac=0cc8cd1e4702a17478bc325b3dc1db94" alt="Card image cap">
+  <img class="card-img-top" src="https://cdn-icons.flaticon.com/png/512/3171/premium/3171065.png?token=exp=1653439497~hmac=96c0f89e068f611b003924922ed5edce" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
+    <h5 class="card-title">Usuario</h5>
     <p class="card-text"></p>
   </div>
 </div>
     </div>
     <div class="col-4">
     <div class="card" style="width: 12rem;">
-  <img class="card-img-top" src="https://cdn-icons.flaticon.com/png/512/2143/premium/2143272.png?token=exp=1652817074~hmac=6f1f4569b14fb515684388f4e44b4341" alt="Card image cap">
+  <img class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/3126/3126647.png" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
+    <h5 class="card-title">Cliente</h5>
     <p class="card-text"></p>
   </div>
 </div>
@@ -46,7 +46,7 @@ include "conexion.php";
     <div class="card" style="width: 12rem;">
   <img class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/72/72109.png" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
+    <h5 class="card-title">Proveedor</h5>
     <p class="card-text"></p>
   </div>
 </div>
@@ -58,16 +58,16 @@ include "conexion.php";
     <div class="card" style="width: 12rem;">
   <img class="card-img-top" src="https://cdn-icons-png.flaticon.com/512/1524/1524711.png" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
+    <h5 class="card-title">Producto</h5>
     <p class="card-text"></p>
   </div>
 </div>
     </div>
     <div class="col-4">
     <div class="card" style="width: 12rem;">
-  <img class="card-img-top" src="https://cdn-icons.flaticon.com/png/512/5553/premium/5553917.png?token=exp=1652817484~hmac=02018ec02e3419243fa84b907f11d916" alt="Card image cap">
+  <img class="card-img-top" src="https://cdn-icons.flaticon.com/png/512/2516/premium/2516185.png?token=exp=1653440027~hmac=24c9b975cc38ca352efb1dad4bcd1cce" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
+    <h5 class="card-title">Ventas</h5>
     <p class="card-text"></p>
   </div>
 </div>
