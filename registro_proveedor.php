@@ -25,7 +25,7 @@ $alesrt = '<h2><p class="alert alert-danger" role="alert">Los campos no esta com
   $idusuario = $_SESSION['idusuario'];
 
     $query_insert = mysqli_query($conection,"INSERT INTO  proveedor (proveedor,sector_comercial,documentos,correo,URL,dirrecion,ciudad,telefono,idusuario)
-    VALUES('$proveedor','$sector_comercial','$documentos','$correo','$URL','$dirrecion','$ciudad',$telefono,$idusuario)");
+    VALUES('$proveedor','$sector_comercial','$documentos','$correo','$URL','$dirrecion','$ciudad','$telefono','$idusuario')");
 
         if($query_insert){
         
@@ -35,6 +35,7 @@ $alesrt = '<h2><p class="alert alert-danger" role="alert">Los campos no esta com
           $alesrt ='</h2><p class="alert alert-danger" role="alert">No fue imposible de registra el proveedor</p></h2>';
         }
    }
+   mysqli_close($conection);
 }
 ?>
 <!doctype html>
