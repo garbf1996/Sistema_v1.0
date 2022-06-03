@@ -66,9 +66,9 @@
 
         </ul>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <div class="form-inline my-2 my-lg-0">
         <a href="salir.php"><button type="button"  class="btn btn-outline-danger">Salir</button></a>
-    </form>
+    </div>
       </div>
     </nav> 
  
