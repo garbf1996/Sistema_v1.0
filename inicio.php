@@ -84,7 +84,8 @@ include "conexion.php";
          <div class="logoUser">
            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" width="100">
          </div>
-         <div class="divDataUser">
+         <br>
+         <div class="divDataUser text-center">
           <h4>Informaacion personal</h4>
 
           <div>
@@ -120,40 +121,42 @@ include "conexion.php";
           </form>
          </div>
         </div>
-        <div class="containerDataEmpresa">
+        <div class="containerDataEmpresa textcenter">
           <div class="logoEmpresa">
           <img src="https://cdn-icons.flaticon.com/png/512/3328/premium/3328269.png?token=exp=1654212693~hmac=14ac051f08d644d252d15b7003759887" width = "100">
           </div>
-          <h4>Datos del la empresa</h4>
+          <br>
+          <h4 class="text-center">Datos del la empresa</h4>
+          <br>
           <form action="" method="post" name="frmEmpresa" id="frmEmpresa">
             <input type="hidden" name="action" value="updateDataEmpresa" />
 
             <div>
-              <label>Nit:</label> <input type="text" name="txtNit" id="txtNit" placeholder="Nit de la empresa" value="" required>
+              <input type="text" name="txtNit" id="txtNit" placeholder="Nit de la empresa" value="" required>
             </div>
 
             <div>
-              <label>Nombre:</label> <input type="text" name="txtNombre" id="txtNombre" placeholder="Nombre de la empresa" value="" required>
+            <input type="text" name="txtNombre" id="txtNombre" placeholder="Nombre de la empresa" value="" required>
             </div>
                
             <div>
-              <label>Razon social:</label> <input type="text" name="txtRazon" id="txtRazon" placeholder="Razon social" value="" required>
+               <input type="text" name="txtRazon" id="txtRazon" placeholder="Razon social" value="" required>
             </div>
 
             <div>
-              <label>Telefono:</label> <input type="text" name="txtTelefono" id="txttelefono" placeholder="number de telefono" value="" required>
+           <input type="text" name="txtTelefono" id="txttelefono" placeholder="number de telefono" value="" required>
             </div>
 
             <div>
-              <label>Correo electronico:</label> <input type="email" name="txtemail" id="txtemal" placeholder="Correo electronico" value="" required>
+           <input type="email" name="txtemail" id="txtemal" placeholder="Correo electronico" value="" required>
             </div>
 
             <div>
-              <label>Dirrecion:</label> <input type="text" name="txtdirrecion" id="txtdirrecion" placeholder="Dirrecion" value="" required>
+             <input type="text" name="txtdirrecion" id="txtdirrecion" placeholder="Dirrecion" value="" required>
             </div>
 
             <div>
-              <label>ITB%:</label> <input type="text" name="txtIBT" id="txtIBT" placeholder="ITB" value="" required>
+              <input type="text" name="txtIBT" id="txtIBT" placeholder="ITB" value="" required>
             </div>
 
             <div class="alertFormEmrpresa" style="display: none"></div>
