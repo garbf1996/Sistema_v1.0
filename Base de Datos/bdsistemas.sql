@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 25-04-2022 a las 23:16:35
+-- Servidor: localhost
+-- Tiempo de generación: 08-06-2022 a las 20:05:12
 -- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 7.4.28
+-- Versión de PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -108,6 +108,23 @@ SELECT 0 factura;
 END IF;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `data_count` ()   BEGIN
+DECLARE usuario int;
+DECLARE cliente int;
+DECLARE proveedor int;
+DECLARE producto int;
+DECLARE ventas int;
+
+SELECT COUNT(*) INTO usuario FROM usuario WHERE estatus !=10;
+SELECT COUNT(*) INTO cliente FROM cliente WHERE estatus !=10;
+SELECT COUNT(*) INTO proveedor FROM proveedor WHERE estatus !=10;
+SELECT COUNT(*) INTO producto FROM producto WHERE estatus !=10;
+SELECT COUNT(*) INTO ventas FROM factura WHERE estatus !=10;
+
+SELECT usuario,cliente,proveedor,producto,ventas;
+
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `del_detalle_temp` (IN `id_detalle` INT, IN `token` VARCHAR(50))   BEGIN
 
 
@@ -118,6 +135,28 @@ SELECT tmp.correlativo,tmp.codproducto,p.nombre,tmp.cantidad,tmp.precio_venta FR
 INNER JOIN producto p 
 ON tmp.codproducto = p.codproducto
 WHERE tmp.token_user = token_user;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insrtar_proveedor` (IN `proveedor` VARCHAR(45), IN `sector_comercial` VARCHAR(45), IN `documentos` VARCHAR(45), IN `correo` VARCHAR(45), IN `URL` VARCHAR(45), IN `dirrecion` VARCHAR(45), IN `ciudad` VARCHAR(45), IN `telefono` VARCHAR(13), IN `estatus` VARCHAR(1), IN `idusuario` INT)   BEGIN
+insert into proveedor(proveedor,
+sector_comercial,
+documentos,
+correo,
+URL,
+dirrecion,
+ciudad,
+telefono,
+estatus,
+ idusuario) values(proveedor,
+sector_comercial,
+documentos,
+correo,
+URL,
+dirrecion,
+ciudad,
+telefono,
+estatus,
+idusuario);
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `procesar_venta` (IN `cod_usuario` INT, IN `cod_cliente` INT, IN `token` VARCHAR(50))   BEGIN
@@ -202,10 +241,8 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`idcliente`, `nombre`, `apellido`, `documentos`, `correo`, `dirrecion`, `ciudad`, `movil`, `estatus`, `idusuario`) VALUES
-(1, 'juan', 'batista pena', '123654789', 'garbfbatista@gmail.com.do', 'Calle maximos Gomez ', 'Santaigo', '8294512', '0', 1),
-(105, 'Maria', 'Batista', '99950', 'maria@gmail.com', 'Calle VLL', 'Satiago', '829-451-1740', '0', 1),
-(106, 'juan', 'Batista pena', '1225454', 'Gabfbatista@gmail.com.do', 'Calle maximo gomes v', 'Satiago fg', '829-451-1740', '0', 1),
-(107, 'garber', 'Batista', '999', 'garbfbatista@gmail.com', 'Calle maximo gomes', 'Satiago', '829-451-1740', '1', 1);
+(108, 'Garber', 'Batista', '999', 'Sonny@gamil.com', 'Calle vll', 'Santiago', '123', '1', 1),
+(109, 'juan', 'Batsiat', '123', 'jua@gamil.com', 'Calle maximo gomes', 'Santiago', '829544', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -245,6 +282,13 @@ CREATE TABLE `detalle` (
   `precio_venta` decimal(10,2) NOT NULL COMMENT 'Precio de venta de producto'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `detalle`
+--
+
+INSERT INTO `detalle` (`correlativo`, `token_user`, `codproducto`, `cantidad`, `precio_venta`) VALUES
+(453, 'c4ca4238a0b923820dcc509a6f75849b', 1, 1, '1200.00');
+
 -- --------------------------------------------------------
 
 --
@@ -264,13 +308,8 @@ CREATE TABLE `detallefactura` (
 --
 
 INSERT INTO `detallefactura` (`correlativo`, `nofactura`, `codproducto`, `cantidad`, `precio_venta`) VALUES
-(102, 80, 71, 1, '18000.00'),
-(103, 81, 71, 1, '18000.00'),
-(104, 82, 71, 1, '16722.86'),
-(105, 83, 75, 3, '1200.00'),
-(106, 84, 75, 2, '1200.00'),
-(107, 84, 75, 1, '1200.00'),
-(108, 85, 76, 1, '1200.00');
+(109, 86, 1, 1, '1200.00'),
+(110, 87, 1, 1, '1200.00');
 
 -- --------------------------------------------------------
 
@@ -292,13 +331,8 @@ CREATE TABLE `entrada` (
 --
 
 INSERT INTO `entrada` (`correlativo`, `codproducto`, `fecha`, `precio`, `existencia`, `idusuario`) VALUES
-(63, 71, '2022-04-07 18:30:31', '18000.00', 15, 1),
-(64, 72, '2022-04-09 00:18:05', '28000.00', 15, 1),
-(65, 73, '2022-04-09 00:20:58', '28000.00', 15, 1),
-(66, 74, '2022-04-21 20:17:43', '18000.00', 15, 1),
-(67, 75, '2022-04-21 22:39:14', '1200.00', 15, 1),
-(68, 76, '2022-04-21 22:43:01', '1200.00', 15, 1),
-(69, 77, '2022-04-22 23:40:26', '450.00', 2147483647, 1);
+(70, 1, '2022-06-01 00:32:53', '1200.00', 10, 1),
+(71, 78, '2022-06-01 12:48:10', '1200.00', 10, 1);
 
 -- --------------------------------------------------------
 
@@ -320,12 +354,8 @@ CREATE TABLE `factura` (
 --
 
 INSERT INTO `factura` (`nofactura`, `fecha`, `usuario`, `codcliente`, `totalfactura`, `estatus`) VALUES
-(80, '2022-04-07 14:30:52', 1, 1, '18000.00', 0),
-(81, '2022-04-07 14:41:25', 1, 105, '18000.00', 1),
-(82, '2022-04-18 21:12:10', 1, 1, '16722.86', 1),
-(83, '2022-04-21 19:22:18', 1, 1, '3600.00', 1),
-(84, '2022-04-21 19:24:13', 1, 107, '3600.00', 1),
-(85, '2022-04-25 16:44:37', 1, 1, '1200.00', 2);
+(86, '2022-05-31 20:34:22', 1, 108, '1200.00', 1),
+(87, '2022-06-07 23:05:48', 1, 108, '1200.00', 1);
 
 -- --------------------------------------------------------
 
@@ -342,7 +372,6 @@ CREATE TABLE `producto` (
   `proveedor` int(11) NOT NULL COMMENT 'Llave secundaria ',
   `precio` decimal(10,2) NOT NULL COMMENT 'Precio de compra ',
   `existencia` varchar(11) NOT NULL COMMENT 'Existencia de producto ',
-  `foto` text NOT NULL COMMENT 'Imagen de producto',
   `date_add` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Fecha de compra ',
   `estatus` int(11) NOT NULL DEFAULT 1 COMMENT 'Estatus si esta activo o inactivo ',
   `idusuario` int(11) NOT NULL COMMENT 'Llave secundaria '
@@ -352,14 +381,9 @@ CREATE TABLE `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`codproducto`, `nombre`, `modelos`, `ser_no`, `categoria`, `proveedor`, `precio`, `existencia`, `foto`, `date_add`, `estatus`, `idusuario`) VALUES
-(71, ' playstation 4', 'xcbff', 'qsxxss', ' Video', 8, '16722.86', '13', 'img_f06fb96e7df0a679c51ec7b031a5d249.jpg', '2022-04-07 18:30:31', 0, 1),
-(72, ' playstation 5', 'fat', 'qsxxss', ' Video juegos', 8, '28000.00', '15', 'img_eca3747d7bb632a0f7ccd522ed96e8d8.jpg', '2022-04-09 00:18:05', 0, 1),
-(73, ' xbox one', 's', 'ws2221', ' Video juegos', 9, '28000.00', '15', 'img_producto.jpg', '2022-04-09 00:20:58', 0, 1),
-(74, ' playstation 6', 'LX-50', 'qsxxss', ' Video juegos', 9, '18000.00', '15', 'img_producto.jpg', '2022-04-21 20:17:43', 0, 1),
-(75, ' playstation 4', 'slit', 'ws2221555', ' Video juegos', 10, '1200.00', '9', 'img_36ff8eab247934e22da9dd9f24c6c3cd.jpg', '2022-04-21 22:39:14', 1, 1),
-(76, ' xbox one', 's', 'ws2221555', ' Video juegos', 11, '1200.00', '15', 'img_905d41ab46baf5c4fb6fc5235a50704e.jpg', '2022-04-21 22:43:01', 1, 1),
-(77, ' lavado ', 'Largo', '111111111111111', ' Cabello', 12, '450.00', '10000000000', 'img_7d49795a1738a2698f2b842810d44571.jpg', '2022-04-22 23:40:26', 1, 1);
+INSERT INTO `producto` (`codproducto`, `nombre`, `modelos`, `ser_no`, `categoria`, `proveedor`, `precio`, `existencia`, `date_add`, `estatus`, `idusuario`) VALUES
+(1, 'ps4', 'fat', 'dfss', 'video juego', 1, '1200.00', '8', '2022-06-01 00:32:53', 1, 1),
+(78, ' ps5', 'fal', '123665', ' video juegos', 14, '1200.00', '10', '2022-06-01 12:48:10', 1, 1);
 
 --
 -- Disparadores `producto`
@@ -389,7 +413,6 @@ CREATE TABLE `proveedor` (
   `ciudad` varchar(45) NOT NULL COMMENT 'provincia donde el proveedor esta ubicado ',
   `telefono` varchar(13) NOT NULL COMMENT 'Contactos de proveedor',
   `estatus` varchar(1) NOT NULL DEFAULT '1' COMMENT 'Si el proveedor esta activo o inactivo ',
-  `fecha` datetime NOT NULL COMMENT 'Fecha de registro ',
   `idusuario` int(11) NOT NULL COMMENT 'Usuario que se encargo de registra el proveedor '
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -397,12 +420,11 @@ CREATE TABLE `proveedor` (
 -- Volcado de datos para la tabla `proveedor`
 --
 
-INSERT INTO `proveedor` (`idproveedor`, `proveedor`, `sector_comercial`, `documentos`, `correo`, `URL`, `dirrecion`, `ciudad`, `telefono`, `estatus`, `fecha`, `idusuario`) VALUES
-(8, 'Sony', 'Tecnologia', 'qssasdd', 'sony@gmail.com', 'www.sony.com.do', 'Calle maximo gomes', 'Santiago', '82945887', '0', '0000-00-00 00:00:00', 1),
-(9, 'xbox', 'Tecnologia', '5541122', 'xbox@gmail.com', 'xbox.com.do', 'Calle maximo gomes', 'Satiago', '82945887', '0', '0000-00-00 00:00:00', 1),
-(10, 'Sony ', 'Liquido', '-2646489', 'sony@gmail.com', 'www.sony.com.do', 'Calle maximo gomes', 'Satiago', '82945887', '1', '0000-00-00 00:00:00', 1),
-(11, 'xbox', 'video juegos ', '755411', 'sony@gmail.com', 'www.sony.com.do', 'Calle maximo gomes', 'Satiago', '82945887', '1', '0000-00-00 00:00:00', 1),
-(12, 'Salon jenny', 'Bellesa', '402-2646884-8', 'salo.@gamil.com', 'www.salon.com.do', 'Calle maximo gomes', 'Satiago', '82945887', '1', '0000-00-00 00:00:00', 1);
+INSERT INTO `proveedor` (`idproveedor`, `proveedor`, `sector_comercial`, `documentos`, `correo`, `URL`, `dirrecion`, `ciudad`, `telefono`, `estatus`, `idusuario`) VALUES
+(1, 'Sonnyy', 'Tecnologias', '4565555', 'sonny', 'sonny@gamil.com', 'Calle maximos gomex', 'Santaigo', '829541', '1', 1),
+(13, 'garber', 'tecnologia', '123', 'garbf', 'ds', 'sddd', 'ssss', 'ddd', '1', 1),
+(14, 'Sonny', 'Tecnologia', '123', 'jua@gamil.com', 'www.sonny.com', 'Calle maximo gomes', 'Santiago', '829544', '1', 1),
+(15, 'Sonny', 'Tecnologia', '123', 'jua@gamil.com', 'www.sonny.com', 'Calle maximo gomes', 'Santiago', '829544', '1', 1);
 
 -- --------------------------------------------------------
 
@@ -534,7 +556,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Llave primaria', AUTO_INCREMENT=108;
+  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Llave primaria', AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT de la tabla `configuracion`
@@ -546,37 +568,37 @@ ALTER TABLE `configuracion`
 -- AUTO_INCREMENT de la tabla `detalle`
 --
 ALTER TABLE `detalle`
-  MODIFY `correlativo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Lave primario', AUTO_INCREMENT=448;
+  MODIFY `correlativo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Lave primario', AUTO_INCREMENT=454;
 
 --
 -- AUTO_INCREMENT de la tabla `detallefactura`
 --
 ALTER TABLE `detallefactura`
-  MODIFY `correlativo` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `correlativo` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
 -- AUTO_INCREMENT de la tabla `entrada`
 --
 ALTER TABLE `entrada`
-  MODIFY `correlativo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Llave Primaria', AUTO_INCREMENT=70;
+  MODIFY `correlativo` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Llave Primaria', AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
-  MODIFY `nofactura` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de factura ', AUTO_INCREMENT=86;
+  MODIFY `nofactura` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Numero de factura ', AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `codproducto` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Llave primaria', AUTO_INCREMENT=78;
+  MODIFY `codproducto` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Llave primaria', AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `idproveedor` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Llave primaria ', AUTO_INCREMENT=13;
+  MODIFY `idproveedor` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Llave primaria ', AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`
