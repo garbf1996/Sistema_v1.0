@@ -6,6 +6,13 @@ if(empty($_SESSION['active'])){
 ?>
 <?php
 include "conexion.php";
+$query_dash = mysqli_query($conection,"CALL data_count();");
+$result_dash = mysqli_num_rows($query_dash);
+if($result_dash > 0){
+  $data_dash = mysqli_fetch_assoc($query_dash);
+  mysqli_close($conection);
+}
+
 ?>
 
 
@@ -34,7 +41,7 @@ include "conexion.php";
          <i class="fa fa-user" aria-hidden="true"></i>
            <p>
              <strong>Usuarios</strong><br>
-             <span>40</span>
+             <span><?= $data_dash['usuario']?></span>
            </p>
          </a>
           
@@ -42,7 +49,7 @@ include "conexion.php";
          <i class="fa-solid fa-user-group"></i>
            <p>
              <strong>Clientes</strong><br>
-             <span>40</span>
+             <span><?= $data_dash['cliente']?></span>
            </p>
          </a>
 
@@ -50,7 +57,7 @@ include "conexion.php";
          <i class="fa-solid fa-user-tie"></i>
            <p>
              <strong>Proveedores</strong><br>
-             <span>40</span>
+             <span><?= $data_dash['proveedor']?></span>
            </p>
          </a>
 
@@ -60,7 +67,7 @@ include "conexion.php";
          <i class="fas fa-box"></i>
            <p>
              <strong>Productos</strong><br>
-             <span>40</span>
+             <span><?= $data_dash['producto']?></span>
            </p>
          </a>
 
@@ -68,109 +75,13 @@ include "conexion.php";
          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
            <p>
              <strong>Ventas</strong><br>
-             <span>40</span>
+             <span><?= $data_dash['ventas']?></span>
            </p>
          </a>
       </div>
     </div>
 
-  <div class="">
-    <div class="divContainer">
-      <div>
-        <h1 class="titlepanelcontrol">Configuracion</h1>
-      </div>
-      <div class="containerPerfil">
-        <div class="containerDataUser">
-         <div class="logoUser">
-           <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" width="100">
-         </div>
-         <br>
-         <div class="divDataUser text-center">
-          <h4>Informaacion personal</h4>
 
-          <div>
-            <label>Nombre:</label> <span>Garber</span>
-          </div>
-
-          <div>
-            <label>Correo:</label> <span>garbf@gamil.com</span>
-          </div>
-             
-         <h4>Datos Usuario</h4>
-         <div>
-            <label>Rol:</label> <span>Admin</span>
-          </div>
-
-          <div>
-            <label>Usuario:</label> <span>Garber</span>
-          </div>
-          <h4>Cambiar contraseña</h4>
-          <form method="post" action="" name="frmChangepassword" id="frmChangepassword">
-          <div>
-           <input type="password" name="txtpasswordUser" id="txtpasswordUser" placeholder="Contraseña actual" value="" required>
-            </div>
-              <br>
-            <div>
-             <input type="password" name="txtpasswordnew" id="txtpasswordnew" placeholder="Nuevo contraseña" value="" required>
-            </div>
-            <br>
-            <div>
-              <button type="submit" name="tbn_save" id="tbn_save"><i class="fa fa-key"></i>Cambiar Contraseña</button>
-             </div>
-
-          </form>
-         </div>
-        </div>
-        <div class="containerDataEmpresa textcenter">
-          <div class="logoEmpresa">
-          <img src="https://cdn-icons.flaticon.com/png/512/3328/premium/3328269.png?token=exp=1654212693~hmac=14ac051f08d644d252d15b7003759887" width = "100">
-          </div>
-          <br>
-          <h4 class="text-center">Datos del la empresa</h4>
-          <br>
-          <form action="" method="post" name="frmEmpresa" id="frmEmpresa">
-            <input type="hidden" name="action" value="updateDataEmpresa" />
-
-            <div>
-              <input type="text" name="txtNit" id="txtNit" placeholder="Nit de la empresa" value="" required>
-            </div>
-
-            <div>
-            <input type="text" name="txtNombre" id="txtNombre" placeholder="Nombre de la empresa" value="" required>
-            </div>
-               
-            <div>
-               <input type="text" name="txtRazon" id="txtRazon" placeholder="Razon social" value="" required>
-            </div>
-
-            <div>
-           <input type="text" name="txtTelefono" id="txttelefono" placeholder="number de telefono" value="" required>
-            </div>
-
-            <div>
-           <input type="email" name="txtemail" id="txtemal" placeholder="Correo electronico" value="" required>
-            </div>
-
-            <div>
-             <input type="text" name="txtdirrecion" id="txtdirrecion" placeholder="Dirrecion" value="" required>
-            </div>
-
-            <div>
-              <input type="text" name="txtIBT" id="txtIBT" placeholder="ITB" value="" required>
-            </div>
-
-            <div class="alertFormEmrpresa" style="display: none"></div>
-             
-            <div>
-              <button type="submit" class="btn_save btnChangepass">
-                <i class="fa fa-save"></i>Guardar datos
-              </button>
-            </div>
-          </form> 
-        </div>
-      </div>
-    </div>
-</div>
 
   </section> 
 
