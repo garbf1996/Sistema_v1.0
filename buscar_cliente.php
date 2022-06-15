@@ -127,7 +127,7 @@ include "conexion.php";
                     <td><?php echo $data["movil"];?></td>
                     <td>
                      
-                      <a href="edit_usuario.php?id=<?php echo $data["idusuario"];?>">Editar</a> 
+                    <a href="edit_cliente.php?id=<?php echo $data["idcliente"];?>">Editar</a> 
                       <?php
                       if($_SESSION['idrol'] ==1 || $_SESSION['idrol'] ==2){
                       ?>
@@ -135,7 +135,7 @@ include "conexion.php";
                       ?>
                     </td>
                     <td>
-                    <a href="eliminar_confimar_cliente.php?id=<?php echo $data["idusuario"];?>">Eliminar</a>
+                    <a href="eliminar_confimar_cliente.php?id=<?php echo $data["idcliente"];?>">Eliminar</a>
                     </td>
                    </tr> 
                    <?php  
