@@ -111,7 +111,7 @@ if($_POST['action'] == 'detalleProducto'){
               <th class="textcenter">'.$data['cantidad'].'</th>
                <th class="textringht">'.$data['precio_venta'].'</th>
               <th class="textringht">'.$precioTotal.'</th>
-              <th><a href="#" onclick = "event.preventDefault(); del_product_detalle('.$data['correlativo'].');" class= "link_delete"><img src="icono/carrito-de-compras.PNG">
+              <th><a href="#" onclick = "event.preventDefault(); del_product_detalle('.$data['correlativo'].');" class= "link_delete"><img src="icono/null.pnp">
               </a></th>
              
               </tr>
@@ -203,7 +203,7 @@ if($_POST['action'] == 'detalleProducto'){
               <th class="textcenter">'.$data['cantidad'].'</th>
                <th class="textringht">'.$data['precio_venta'].'</th>
               <th class="textringht">'.$precioTotal.'</th>
-              <th><a href="#" onclick = "event.preventDefault(); del_product_detalle('.$data['correlativo'].')" class= "link_delete"><img src="icono/carrito-de-compras.png"></a></th>
+              <th><a href="#" onclick = "event.preventDefault(); del_product_detalle('.$data['correlativo'].')" class= "link_delete"><img src="icono/null.png"></a></th>
               </tr>
             ';
             }

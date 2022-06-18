@@ -16,6 +16,7 @@ include "conexion.php";
  include "nav.php";
  ?>
     <title>Sistemas</title>  
+    <script src="https://kit.fontawesome.com/fdd9306a56.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <br>
@@ -41,7 +42,7 @@ include "conexion.php";
               <form action="buscar_cliente.php" method="get">
             <div class="input-group">
             <div class="form-outline">
-            <input type="search" id="form1" name="busqueda" value="<?php echo $busqueda; ?>" class="form-control" />
+            <input type="search" id="form1" name="busqueda" value="<?php echo $busqueda; ?>" class="form-control" placeholder="Buscar Clientes" />
             </div>
                   </div>
                 </form>

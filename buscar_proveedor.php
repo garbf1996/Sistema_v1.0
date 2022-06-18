@@ -42,7 +42,7 @@ include "nav.php";
               <form action="buscar_proveedor.php" method="get">
             <div class="input-group">
             <div class="form-outline">
-            <input type="search" id="form1" name="busqueda" value="<?php echo $busqueda; ?>" class="form-control" />
+            <input type="search" id="form1" name="busqueda" value="<?php echo $busqueda; ?>" class="form-control" placeholder="Buscar proveedores" />
             </div>
                   </div>
                 </form>
