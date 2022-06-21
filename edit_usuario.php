@@ -102,7 +102,7 @@ include "nav.php";
 ?>
 
     <title>Sistemas</title>  
-    <link rel="stylesheet" href="css/estilos.css">  
+    <link rel="stylesheet" href="css/estilos.css"> 
   </head>
   <body>
 <!--Formulario-->
